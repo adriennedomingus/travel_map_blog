@@ -1,5 +1,6 @@
 class Blog < ActiveRecord::Base
   belongs_to :user
+  belongs_to :trip
   before_save :set_slug
 
   def formatted_date

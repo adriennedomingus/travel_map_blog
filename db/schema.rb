@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416200005) do
+ActiveRecord::Schema.define(version: 20160416220823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,9 +24,20 @@ ActiveRecord::Schema.define(version: 20160416200005) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "slug"
+    t.integer  "trip_id"
   end
 
+  add_index "blogs", ["trip_id"], name: "index_blogs_on_trip_id", using: :btree
   add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
+
+  create_table "trips", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "slug"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"
@@ -38,5 +49,6 @@ ActiveRecord::Schema.define(version: 20160416200005) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "blogs", "trips"
   add_foreign_key "blogs", "users"
 end

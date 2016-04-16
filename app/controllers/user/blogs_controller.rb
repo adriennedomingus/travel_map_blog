@@ -9,8 +9,8 @@ class User::BlogsController < User::BaseController
     @blog = Blog.new(blog_params)
     if @blog.save
       current_user.blogs << @blog
-      service = TwitterService.new(current_user)
-      service.post_tweet(blog_url(@blog.slug))
+      # service = TwitterService.new(current_user)
+      # service.post_tweet(blog_url(@blog.slug))
       redirect_to blog_path(@blog.slug)
     else
       render :new
@@ -40,7 +40,7 @@ class User::BlogsController < User::BaseController
     Blog.find(params[:id]).destroy
     redirect_to users_blogs_path(current_user)
   end
-  
+
   private
 
     def blog_params

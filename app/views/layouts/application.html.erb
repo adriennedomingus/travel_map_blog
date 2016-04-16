@@ -8,13 +8,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li><%= link_to "Welcome #{current_user.nickname}", root_path %></li>
+        <li><%= link_to "Logout", logout_path %></li>
+      <% else %>
+        <li>  <%= link_to "Sign in with Twitter", "/auth/twitter" %> </li>
+      <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-left">
+      <% if current_user %>
+        <li><%= link_to "All Blogs", users_blogs_path(current_user)%></li>
+        <li><%= link_to "New Blog", new_user_blog_path%></li>
+        <!--  New Trip-->
+        <!--  All Trips-->
+      <% end %>
+    </ul>
+  </div>
+</nav>
 
-  <% if current_user %>
-          Welcome <%= current_user.nickname %>
-          <li><%= link_to "Logout", logout_path %></li>
-        <% else %>
-          <li>  <%= link_to "Sign in with Twitter", "/auth/twitter" %> </li>
-        <% end %>
 <%= yield %>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS"] %>&callback=initMap"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

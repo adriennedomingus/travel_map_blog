@@ -1,4 +1,6 @@
 class User::BlogsController < User::BaseController
+  before_action :require_user, except: [:index]
+
   def new
     @blog = Blog.new
   end
@@ -13,6 +15,11 @@ class User::BlogsController < User::BaseController
     else
       render :new
     end
+  end
+
+  def index
+    user = User.find_by(id: params[:id])
+    @blogs = Blog.where(user_id: user.id)
   end
 
   private

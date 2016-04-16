@@ -1,4 +1,6 @@
-<%= @blog.title %>
-<%= @blog.formatted_date %>
-<%= @blog.posted_on %>
-<%= @blog.content %>
+<div class="container">
+  <h1 class="blog-title"><%= @blog.title %></h1>
+  <h4><%= @blog.formatted_date %></h4>
+  <p class="posted-date"><%= "Posted on #{@blog.posted_on}" %></p>
+  <p><%= @blog.content %></p>
+</div>

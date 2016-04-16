@@ -14,5 +14,28 @@
  *= require_self
  */
 
- html, body { height: 100%; margin: 0; padding: 0; }
-  #map { height: 100%; }
+html, body {
+  height: 100%; margin: 0; padding: 0;
+}
+
+#map {
+  margin-top: -21px;
+  height: 100%;
+}
+
+#blog_content {
+  height: 400px;
+}
+
+.blog-title {
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
+}
+
+.posted-date {
+  text-align: center;
+  color: grey;
+}

@@ -22,6 +22,20 @@ class User::BlogsController < User::BaseController
     @blogs = Blog.where(user_id: user.id)
   end
 
+  def edit
+    render file: "/public/404" unless current_user? && current_user.id == params[:id].to_i
+    @blog = Blog.find_by(slug: params[:slug])
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+    if @blog.update(blog_params)
+      redirect_to blog_path(@blog.slug)
+    else
+      render :edit
+    end
+  end
+
   private
 
     def blog_params

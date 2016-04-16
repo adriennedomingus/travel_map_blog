@@ -7,6 +7,8 @@ class User::BlogsController < User::BaseController
     @blog = Blog.new(blog_params)
     if @blog.save
       current_user.blogs << @blog
+      service = TwitterService.new(current_user)
+      service.post_tweet(blog_url(@blog))
       redirect_to blog_path(@blog)
     else
       render :new

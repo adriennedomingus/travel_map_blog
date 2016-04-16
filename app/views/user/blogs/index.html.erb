@@ -7,7 +7,7 @@
     </tr>
     <% @blogs.each do |blog| %>
       <tr>
-        <td><%= link_to blog.title, blog_path(blog) %></td>
+        <td><%= link_to blog.title, blog_path(blog.slug) %></td>
         <td><%= blog.formatted_date %></td>
         <td><%= blog.posted_on %></td>
       </tr>

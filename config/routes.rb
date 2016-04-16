@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   get 'users/:id/blogs', to: 'user/blogs#index', as: 'users_blogs'
 
-  resources :blogs, only: [:show]
+  resources :blogs, only: [:show], param: :slug
 end

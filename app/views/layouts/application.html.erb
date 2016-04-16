@@ -8,6 +8,12 @@
 </head>
 <body>
 
+  <% if current_user %>
+          Welcome <%= current_user.nickname %>
+          <li><%= link_to "Logout", logout_path %></li>
+        <% else %>
+          <li>  <%= link_to "Sign in with Twitter", "/auth/twitter" %> </li>
+        <% end %>
 <%= yield %>
 
 </body>

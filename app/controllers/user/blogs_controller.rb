@@ -36,6 +36,11 @@ class User::BlogsController < User::BaseController
     end
   end
 
+  def destroy
+    Blog.find(params[:id]).destroy
+    redirect_to users_blogs_path(current_user)
+  end
+  
   private
 
     def blog_params

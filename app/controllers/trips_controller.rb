@@ -24,6 +24,7 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find_by(slug: params[:slug])
+    render file: "/public/404" unless current_user? && current_user.id == @trip.user_id
   end
 
   def update
@@ -33,6 +34,16 @@ class TripsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    trip = Trip.find(params[:id])
+    render file: "/public/404" unless current_user? && current_user.id == trip.user_id
+    trip.blogs.each do |blog|
+      blog.update_attribute(:trip_id, nil)
+    end
+    trip.destroy
+    redirect_to users_trips_path(current_user)
   end
 
   private

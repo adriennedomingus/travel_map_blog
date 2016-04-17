@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "user creates a trip" do
+RSpec.feature "user views a trip" do
   scenario "user views trips index" do
     user = User.create(provider: "twitter", uid: "1234", nickname: "adomingus", token: ENV['USER_TOKEN'], secret:  ENV['USER_SECRET'])
     t1 = user.trips.create(name: "First trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip")

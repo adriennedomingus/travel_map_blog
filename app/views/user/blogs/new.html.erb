@@ -4,6 +4,16 @@
     <%= f.text_field :title, class: 'form-control' %>
     <%= f.label :date %>
     <%= f.text_field :date, class: 'form-control' %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :latitude %>
+        <%= f.text_field :latitude, class: 'form-control' %>
+      </div>
+      <div class="col-md-6">
+        <%= f.label :longitude %>
+        <%= f.text_field :longitude, class: 'form-control' %>
+      </div>
+    </div>
     <%= f.label :trip %>
     <%= select("blog", :trip_id, current_user.trips.collect { |t| [t.name, t.id]}, {prompt: "None"}, class: 'form-control' )%>
     <%= f.label :content %>

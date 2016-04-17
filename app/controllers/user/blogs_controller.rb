@@ -44,6 +44,6 @@ class User::BlogsController < User::BaseController
   private
 
     def blog_params
-      params.require(:blog).permit(:title, :date, :content, :trip_id)
+      params.require(:blog).permit(:title, :date, :content, :trip_id, :latitude, :longitude)
     end
 end

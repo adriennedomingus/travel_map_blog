@@ -1,5 +1,6 @@
 $( document ).ready(function() {
   initMap();
+  placeMarkers();
 });
 
 var map;
@@ -9,10 +10,19 @@ function initMap() {
     center: {lat: 50.0, lng: 0},
     zoom: 2
   });
+}
 
-  // var marker = new google.maps.Marker({
-  //   position: myLatLng,
-  //   map: map,
-  //   title: 'Hello World!'
-  // });
+function placeMarkers(){
+  $.ajax({
+    url: '/blog-markers',
+    success: function(data) {
+      $.each(data, function(key, blog) {
+        var marker = new google.maps.Marker({
+          position: {lat: blog.latitude, lng: blog.longitude},
+          map: map,
+          title: 'Hello World!'
+        });
+      });
+    }
+  });
 }

@@ -22,6 +22,19 @@ class TripsController < ApplicationController
     @trip = Trip.find_by(slug: params[:slug])
   end
 
+  def edit
+    @trip = Trip.find_by(slug: params[:slug])
+  end
+
+  def update
+    @trip = Trip.find(params[:id])
+    if @trip.update(trip_params)
+      redirect_to trip_path(@trip.slug)
+    else
+      render :edit
+    end
+  end
+
   private
     def trip_params
       params.require(:trip).permit(:name, :start_date, :end_date)

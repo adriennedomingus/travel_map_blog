@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get 'users/:id/trips/:slug', to: 'trips#show', as: 'users_trip'
 
   resources :blogs, only: [:show], param: :slug
-  resources :trips, only: [:new, :create]
-  resources :trips, only: [:show], param: :slug
+  resources :trips, only: [:new, :create, :update]
+  resources :trips, only: [:show, :edit], param: :slug
 
   namespace :user do
     resources :blogs, only: [:new, :create, :update, :destroy]

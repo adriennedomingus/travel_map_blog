@@ -20,8 +20,9 @@
     </ul>
     <ul class="nav navbar-nav navbar-left">
       <% if current_user %>
-        <li><%= link_to "All Blogs", users_blogs_path(current_user)%></li>
+        <li><%= link_to "Your Blogs", users_blogs_path(current_user)%></li>
         <li><%= link_to "New Blog", new_user_blog_path%></li>
+        <li><%= link_to "Your Trips", users_trips_path(current_user)%></li>
         <li><%= link_to "New Trip", new_trip_path%></li>
       <% end %>
     </ul>

@@ -1,1 +1,2 @@
-<%= @trip.name %>
+<h1 class="centered"><%= @trip.name %></h1>
+<%= render partial: "partials/blog_table", locals: {blogs: @trip.blogs} %>

@@ -13,6 +13,11 @@ class TripsController < ApplicationController
     end
   end
 
+  def index
+    @user = User.find(params[:id])
+    @trips = @user.trips
+  end
+
   def show
     @trip = Trip.find_by(slug: params[:slug])
   end

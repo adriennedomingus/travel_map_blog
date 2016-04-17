@@ -1,16 +1,1 @@
-<div class="container">
-  <table class="table">
-    <tr>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Posted On</th>
-    </tr>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= link_to blog.title, blog_path(blog.slug) %></td>
-        <td><%= blog.formatted_date %></td>
-        <td><%= blog.posted_on %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
+<%= render partial: "partials/blog_table", locals: {blogs: @blogs} %>

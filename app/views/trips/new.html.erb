@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_for @trip, url: trips_path, method: :post do |f| %>
+  <%= form_for @trip do |f| %>
     <%= f.label :trip_name %>
     <%= f.text_field :name, class: 'form-control' %>
     <%= f.label :trip_start_date %>

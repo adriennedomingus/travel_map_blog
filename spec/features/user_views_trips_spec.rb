@@ -22,8 +22,8 @@ RSpec.feature "user views a trip" do
     t1 = user.trips.create(name: "First trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip")
     user.trips.create(name: "Second trip", start_date: "2016/04/17", end_date: "2016/04/27", slug: "first-trip")
 
-    b1 = t1.blogs.create(title: "blog title", date: "2016/03/20", content: "content", slug: "title")
-    b2 = t1.blogs.create(title: "blog two title", date: "2016/03/20", content: "content", slug: "title")
+    b1 = t1.blogs.create(title: "blog title", date: "2016/03/20", content: "content", slug: "title", latitude: -40, longitude: 104)
+    b2 = t1.blogs.create(title: "blog two title", date: "2016/03/20", content: "content", slug: "title", latitude: -40, longitude: 104)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

@@ -11,6 +11,8 @@ RSpec.feature "user writes a blog" do
       fill_in :blog_title, with: "Title"
       fill_in :blog_date, with: "2015/03/17"
       fill_in :blog_content, with: "blog content"
+      fill_in :blog_latitude, with: "-150"
+      fill_in :blog_longitude, with: "47"
       select "First trip", from: "blog[trip_id]"
       click_on "Post Blog"
 

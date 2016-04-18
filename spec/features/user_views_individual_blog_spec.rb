@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "user views specific blog" do
   scenario "user views specific blog" do
     user = User.create(provider: "twitter", uid: "1234", nickname: "adomingus", token: ENV['USER_TOKEN'], secret:  ENV['USER_SECRET'])
-    b1 = user.blogs.create(title: "title", date: "2016/03/19", content: "some content", slug: "title")
+    b1 = user.blogs.create(title: "title", date: "2016/03/19", content: "some content", slug: "title", latitude: -40, longitude: 104)
 
     visit blog_path(b1.slug)
 

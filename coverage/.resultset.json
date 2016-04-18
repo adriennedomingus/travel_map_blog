@@ -31,17 +31,24 @@
         null,
         null,
         1,
-        17,
+        26,
         null,
         null,
         1,
-        17,
+        26,
         null,
         null,
         null,
         1,
         1,
         1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
         null
       ],
       "/Users/adrienne/Turing/3module/travel_map_blog/config/environment.rb": [
@@ -315,6 +322,8 @@
         1,
         1,
         1,
+        1,
+        1,
         null,
         1,
         1,
@@ -553,9 +562,22 @@
         1,
         null,
         1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null,
         null
       ],
       "/Users/adrienne/Turing/3module/travel_map_blog/app/models/blog.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
@@ -578,6 +600,8 @@
         1,
         null,
         1,
+        2,
+        2,
         null
       ],
       "/Users/adrienne/Turing/3module/travel_map_blog/app/models/trip.rb": [
@@ -603,6 +627,8 @@
         1,
         null,
         1,
+        2,
+        2,
         null
       ],
       "/Users/adrienne/Turing/3module/travel_map_blog/app/models/user.rb": [
@@ -756,6 +782,6 @@
         null
       ]
     },
-    "timestamp": 1461001861
+    "timestamp": 1461006396
   }
 }

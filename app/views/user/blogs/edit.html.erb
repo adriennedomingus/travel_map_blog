@@ -4,6 +4,16 @@
     <%= f.text_field :title, class: 'form-control' %>
     <%= f.label :date %>
     <%= f.text_field :date, class: 'form-control' %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :latitude %>
+        <%= f.text_field :latitude, class: 'form-control' %>
+      </div>
+      <div class="col-md-6">
+        <%= f.label :longitude %>
+        <%= f.text_field :longitude, class: 'form-control' %>
+      </div>
+    </div>
     <%= f.label :content %>
     <%= f.text_area :content, class: 'form-control' %>
     <br>

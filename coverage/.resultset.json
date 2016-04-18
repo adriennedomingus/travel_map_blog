@@ -31,11 +31,11 @@
         null,
         null,
         1,
-        26,
+        29,
         null,
         null,
         1,
-        26,
+        29,
         null,
         null,
         null,
@@ -602,6 +602,9 @@
         1,
         2,
         2,
+        2,
+        2,
+        2,
         null
       ],
       "/Users/adrienne/Turing/3module/travel_map_blog/app/models/trip.rb": [
@@ -609,6 +612,10 @@
         1,
         1,
         1,
+        1,
+        1,
+        1,
+        null,
         null,
         1,
         12,
@@ -782,6 +789,6 @@
         null
       ]
     },
-    "timestamp": 1461006396
+    "timestamp": 1461006869
   }
 }

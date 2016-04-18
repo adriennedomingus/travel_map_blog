@@ -18,7 +18,7 @@ function placeMarkers(){
     success: function(data) {
       $.each(data, function(key, blog) {
         var marker = new google.maps.Marker({
-          position: {lat: blog.latitude, lng: blog.longitude},
+          position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
           map: map,
           url: "/blogs/" + blog.slug
         });

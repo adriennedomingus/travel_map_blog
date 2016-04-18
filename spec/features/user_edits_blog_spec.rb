@@ -11,6 +11,7 @@ RSpec.feature "user edits a blog" do
     fill_in :blog_title, with: "new title"
     click_on "Update Blog"
     expect(page).to have_content("new title")
+    expect(page).to have_content("Your blog has been updated!")
   end
 
   scenario "visitor cannot edit a blog" do

@@ -7,8 +7,10 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     if @trip.save
       current_user.trips << @trip
+      flash[:success] = "Your trip has been created!"
       redirect_to users_trip_path(current_user.nickname, @trip.slug)
     else
+      flash.now[:danger] = "Please enter all information"
       render :new
     end
   end
@@ -30,8 +32,10 @@ class TripsController < ApplicationController
   def update
     @trip = Trip.find(params[:id])
     if @trip.update(trip_params)
+      flash[:success] = "Your trip has been updated!"
       redirect_to trip_path(@trip.slug)
     else
+      flash.now[:danger] = "Please enter all information"
       render :edit
     end
   end
@@ -43,6 +47,7 @@ class TripsController < ApplicationController
       blog.update_attribute(:trip_id, nil)
     end
     trip.destroy
+    flash[:success] = "Your trip has been deleted!"
     redirect_to users_trips_path(current_user.nickname)
   end
 

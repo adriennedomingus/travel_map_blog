@@ -10,6 +10,7 @@ RSpec.feature "user deletes a trip" do
     visit users_trip_path(user.nickname, t1.slug)
     click_on "Delete"
 
+    expect(page).to have_content("Your trip has been deleted!")
     expect(page).to_not have_content(t1.name)
 
     visit blog_path(b1.slug)

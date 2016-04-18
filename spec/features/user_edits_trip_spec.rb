@@ -12,6 +12,7 @@ RSpec.feature "user edits a trip" do
     click_on "Update Trip"
 
     expect(page).to have_content("new trip name")
+    expect(page).to have_content("Your trip has been updated!")
   end
 
   scenario "user cannot edit another users' trip" do

@@ -11,8 +11,10 @@ class User::BlogsController < User::BaseController
       current_user.blogs << @blog
       # service = TwitterService.new(current_user)
       # service.post_tweet(blog_url(@blog.slug))
+      flash[:success] = "Your blog has been posted!"
       redirect_to blog_path(@blog.slug)
     else
+      flash.now[:danger] = "Please enter all information"
       render :new
     end
   end
@@ -30,14 +32,17 @@ class User::BlogsController < User::BaseController
   def update
     @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
+      flash[:success] = "Your blog has been updated!"
       redirect_to blog_path(@blog.slug)
     else
+      flash.now[:danger] = "Please enter all information"
       render :edit
     end
   end
 
   def destroy
     Blog.find(params[:id]).destroy
+
     redirect_to users_blogs_path(current_user.nickname)
   end
 

@@ -20,7 +20,24 @@ RSpec.feature "user writes a blog" do
       expect(page).to have_content("First trip")
       expect(page).to have_content("March 17, 2015")
       expect(page).to have_content("blog content")
+      expect(page).to have_content("Your blog has been posted!")
     # end
+  end
+
+  scenario "user must enter all attributes" do
+    user = User.create(provider: "twitter", uid: "1234", nickname: "adomingus", token: ENV['USER_TOKEN'], secret:  ENV['USER_SECRET'])
+    user.trips.create(name: "First trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit new_user_blog_path
+    fill_in :blog_date, with: "2015/03/17"
+    fill_in :blog_content, with: "blog content"
+    fill_in :blog_latitude, with: "-150"
+    fill_in :blog_longitude, with: "47"
+    select "First trip", from: "blog[trip_id]"
+    click_on "Post Blog"
+
+    expect(page).to have_content("Please enter all information")
   end
 
   scenario "visitor cannot create a blog" do

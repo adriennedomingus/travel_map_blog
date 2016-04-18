@@ -7,14 +7,14 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     if @trip.save
       current_user.trips << @trip
-      redirect_to users_trip_path(current_user, @trip.slug)
+      redirect_to users_trip_path(current_user.nickname, @trip.slug)
     else
       render :new
     end
   end
 
   def index
-    @user = User.find(params[:id])
+    @user = User.find_by(nickname: params[:nickname])
     @trips = @user.trips
   end
 
@@ -24,7 +24,7 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find_by(slug: params[:slug])
-    render file: "/public/404" unless current_user? && current_user.id == @trip.user_id
+    render file: "/public/404" unless current_user? && current_user == @trip.user
   end
 
   def update
@@ -38,12 +38,12 @@ class TripsController < ApplicationController
 
   def destroy
     trip = Trip.find(params[:id])
-    render file: "/public/404" unless current_user? && current_user.id == trip.user_id
+    render file: "/public/404" unless current_user? && current_user == trip.user
     trip.blogs.each do |blog|
       blog.update_attribute(:trip_id, nil)
     end
     trip.destroy
-    redirect_to users_trips_path(current_user)
+    redirect_to users_trips_path(current_user.nickname)
   end
 
   private

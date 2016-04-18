@@ -18,12 +18,12 @@ class User::BlogsController < User::BaseController
   end
 
   def index
-    user = User.find_by(id: params[:id])
+    user = User.find_by(nickname: params[:nickname])
     @blogs = Blog.where(user_id: user.id)
   end
 
   def edit
-    render file: "/public/404" unless current_user? && current_user.id == params[:id].to_i
+    render file: "/public/404" unless current_user? && current_user.nickname == params[:nickname]
     @blog = Blog.find_by(slug: params[:slug])
   end
 
@@ -38,7 +38,7 @@ class User::BlogsController < User::BaseController
 
   def destroy
     Blog.find(params[:id]).destroy
-    redirect_to users_blogs_path(current_user)
+    redirect_to users_blogs_path(current_user.nickname)
   end
 
   private

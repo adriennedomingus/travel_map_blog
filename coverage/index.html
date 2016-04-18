@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-18T08:54:31-06:00">2016-04-18T08:54:31-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-18T11:51:01-06:00">2016-04-18T11:51:01-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>41</b> files in total.
-    <b>374</b> relevant lines. 
-    <span class="green"><b>368</b> lines covered</span> and
+    <b>375</b> relevant lines. 
+    <span class="green"><b>369</b> lines covered</span> and
     <span class="red"><b>6</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -303,9 +303,9 @@
       <tr>
         <td class="strong"><a href="#cd59d6f11d9910198a041d326ae8af7c833aa2c8" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>20</td>
-        <td>14</td>
-        <td>14</td>
+        <td>21</td>
+        <td>15</td>
+        <td>15</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -865,7 +865,7 @@
         <li class="covered" data-hits="3" data-linenumber="17">
           <span class="hits">3</span>
           
-          <code class="ruby">    @user = User.find(params[:id])</code>
+          <code class="ruby">    @user = User.find_by(nickname: params[:nickname])</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="18">
@@ -925,7 +925,7 @@
         <li class="covered" data-hits="2" data-linenumber="27">
           <span class="hits">2</span>
           
-          <code class="ruby">    render file: &quot;/public/404&quot; unless current_user? &amp;&amp; current_user.id == @trip.user_id</code>
+          <code class="ruby">    render file: &quot;/public/404&quot; unless current_user? &amp;&amp; current_user == @trip.user</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="28">
@@ -1009,7 +1009,7 @@
         <li class="covered" data-hits="1" data-linenumber="41">
           <span class="hits">1</span>
           
-          <code class="ruby">    render file: &quot;/public/404&quot; unless current_user? &amp;&amp; current_user.id == trip.user_id</code>
+          <code class="ruby">    render file: &quot;/public/404&quot; unless current_user? &amp;&amp; current_user == trip.user</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="42">
@@ -1039,7 +1039,7 @@
         <li class="covered" data-hits="1" data-linenumber="46">
           <span class="hits">1</span>
           
-          <code class="ruby">    redirect_to users_trips_path(current_user)</code>
+          <code class="ruby">    redirect_to users_trips_path(current_user.nickname)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">
@@ -1285,7 +1285,7 @@
         <li class="covered" data-hits="2" data-linenumber="21">
           <span class="hits">2</span>
           
-          <code class="ruby">    user = User.find_by(id: params[:id])</code>
+          <code class="ruby">    user = User.find_by(nickname: params[:nickname])</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="22">
@@ -1315,7 +1315,7 @@
         <li class="covered" data-hits="2" data-linenumber="26">
           <span class="hits">2</span>
           
-          <code class="ruby">    render file: &quot;/public/404&quot; unless current_user? &amp;&amp; current_user.id == params[:id].to_i</code>
+          <code class="ruby">    render file: &quot;/public/404&quot; unless current_user? &amp;&amp; current_user.nickname == params[:nickname]</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="27">
@@ -1405,7 +1405,7 @@
         <li class="covered" data-hits="1" data-linenumber="41">
           <span class="hits">1</span>
           
-          <code class="ruby">    redirect_to users_blogs_path(current_user)</code>
+          <code class="ruby">    redirect_to users_blogs_path(current_user.nickname)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
@@ -1489,7 +1489,7 @@
         <li class="covered" data-hits="5" data-linenumber="3">
           <span class="hits">5</span>
           
-          <code class="ruby">    @user = current_user</code>
+          <code class="ruby">    @user = User.find_by(nickname: params[:nickname]) || current_user</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="4">
@@ -3049,8 +3049,8 @@
     <h3>config/routes.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>14</b> relevant lines. 
-      <span class="green"><b>14</b> lines covered</span> and
+      <b>15</b> relevant lines. 
+      <span class="green"><b>15</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -3091,88 +3091,94 @@
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;users/:id/blogs&#39;, to: &#39;user/blogs#index&#39;, as: &#39;users_blogs&#39;</code>
+          <code class="ruby">  get &#39;users/:nickname&#39;, to: &#39;users#show&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="7">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;users/:id/blogs/:slug&#39;, to: &#39;user/blogs#edit&#39;, as: &#39;edit_user_blog&#39;</code>
+          <code class="ruby">  get &#39;users/:nickname/blogs&#39;, to: &#39;user/blogs#index&#39;, as: &#39;users_blogs&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  get &#39;users/:nickname/blogs/:slug&#39;, to: &#39;user/blogs#edit&#39;, as: &#39;edit_user_blog&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  get &#39;users/:id/trips&#39;, to: &#39;trips#index&#39;, as: &#39;users_trips&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;users/:id/trips/:slug&#39;, to: &#39;trips#show&#39;, as: &#39;users_trip&#39;</code>
+          <code class="ruby">  get &#39;users/:nickname/trips&#39;, to: &#39;trips#index&#39;, as: &#39;users_trips&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="11">
           <span class="hits">1</span>
           
+          <code class="ruby">  get &#39;users/:nickname/trips/:slug&#39;, to: &#39;trips#show&#39;, as: &#39;users_trip&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
           <code class="ruby">  get &#39;/blog-markers&#39;, to: &#39;blogs#index&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="12">
+        <li class="never" data-hits="" data-linenumber="13">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="13">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  resources :blogs, only: [:show], param: :slug</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
-          <code class="ruby">  resources :trips, only: [:new, :create, :update, :destroy]</code>
+          <code class="ruby">  resources :blogs, only: [:show], param: :slug</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="15">
           <span class="hits">1</span>
           
+          <code class="ruby">  resources :trips, only: [:new, :create, :update, :destroy]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
           <code class="ruby">  resources :trips, only: [:show, :edit], param: :slug</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="never" data-hits="" data-linenumber="17">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="17">
+        <li class="covered" data-hits="1" data-linenumber="18">
           <span class="hits">1</span>
           
           <code class="ruby">  namespace :user do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="18">
+        <li class="covered" data-hits="1" data-linenumber="19">
           <span class="hits">1</span>
           
           <code class="ruby">    resources :blogs, only: [:new, :create, :update, :destroy]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="19">
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="never" data-hits="" data-linenumber="21">
           
           
           <code class="ruby">end</code>
@@ -3595,7 +3601,7 @@
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
-          <code class="ruby">    visit users_trip_path(user, t1.slug)</code>
+          <code class="ruby">    visit users_trip_path(user.nickname, t1.slug)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="11">
@@ -3685,7 +3691,7 @@
         <li class="covered" data-hits="1" data-linenumber="25">
           <span class="hits">1</span>
           
-          <code class="ruby">    visit users_trip_path(user, t1.slug)</code>
+          <code class="ruby">    visit users_trip_path(user.nickname, t1.slug)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="26">
@@ -3787,7 +3793,7 @@
         <li class="covered" data-hits="1" data-linenumber="11">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(current_path).to eq(users_blogs_path(user))</code>
+          <code class="ruby">    expect(current_path).to eq(users_blogs_path(user.nickname))</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="12">
@@ -4603,7 +4609,7 @@
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
-          <code class="ruby">    visit users_blogs_path(user)</code>
+          <code class="ruby">    visit users_blogs_path(user.nickname)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="11">
@@ -4711,7 +4717,7 @@
         <li class="covered" data-hits="1" data-linenumber="9">
           <span class="hits">1</span>
           
-          <code class="ruby">    visit users_trips_path(user)</code>
+          <code class="ruby">    visit users_trips_path(user.nickname)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="10">
@@ -4837,7 +4843,7 @@
         <li class="covered" data-hits="1" data-linenumber="30">
           <span class="hits">1</span>
           
-          <code class="ruby">    visit users_trips_path(user)</code>
+          <code class="ruby">    visit users_trips_path(user.nickname)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="31">

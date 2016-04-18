@@ -6,7 +6,7 @@ RSpec.feature "user views a trip" do
     t1 = user.trips.create(name: "First trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip")
     t2 = user.trips.create(name: "Second trip", start_date: "2016/04/17", end_date: "2016/04/27", slug: "first-trip")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    visit users_trips_path(user)
+    visit users_trips_path(user.nickname)
 
     expect(page).to have_content(t1.name)
     expect(page).to have_content(t1.formatted_start_date)
@@ -27,7 +27,7 @@ RSpec.feature "user views a trip" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit users_trips_path(user)
+    visit users_trips_path(user.nickname)
     click_on t1.name
 
     expect(page).to have_content(b1.title)

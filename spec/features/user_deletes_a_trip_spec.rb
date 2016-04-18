@@ -7,7 +7,7 @@ RSpec.feature "user deletes a trip" do
     b1 = t1.blogs.create(title: "blog title", date: "2016/03/20", content: "content", slug: "title")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit users_trip_path(user, t1.slug)
+    visit users_trip_path(user.nickname, t1.slug)
     click_on "Delete"
 
     expect(page).to_not have_content(t1.name)
@@ -22,7 +22,7 @@ RSpec.feature "user deletes a trip" do
     t1 = user.trips.create(name: "First trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(other_user)
 
-    visit users_trip_path(user, t1.slug)
+    visit users_trip_path(user.nickname, t1.slug)
     expect(page).to_not have_content("Delete")
   end
 end

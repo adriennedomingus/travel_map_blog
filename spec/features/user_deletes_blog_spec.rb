@@ -8,7 +8,7 @@ RSpec.feature "user deletes a blog" do
 
     visit blog_path(blog.slug)
     click_on "Delete"
-    expect(current_path).to eq(users_blogs_path(user))
+    expect(current_path).to eq(users_blogs_path(user.nickname))
     expect(page).to_not have_content("blog_title")
   end
 end

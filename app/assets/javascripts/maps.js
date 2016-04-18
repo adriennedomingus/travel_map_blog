@@ -13,8 +13,10 @@ function initMap() {
 }
 
 function placeMarkers(){
+  var url = document.URL.split("/")
+  var nickname = url[url.length - 1]
   $.ajax({
-    url: '/blog-markers',
+    url: '/blog-markers/' + nickname,
     success: function(data) {
       $.each(data, function(key, blog) {
         var marker = new google.maps.Marker({

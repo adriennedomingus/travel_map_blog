@@ -14,14 +14,14 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-18T14:08:40-06:00">2016-04-18T14:08:40-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-18T15:04:52-06:00">2016-04-18T15:04:52-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">98.63%</span></span>
+    (<span class="covered_percent"><span class="green">98.4%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>41</b> files in total.
-    <b>438</b> relevant lines. 
-    <span class="green"><b>432</b> lines covered</span> and
-    <span class="red"><b>6</b> lines missed </span>
+    <b>437</b> relevant lines. 
+    <span class="green"><b>430</b> lines covered</span> and
+    <span class="red"><b>7</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -62,12 +62,12 @@
       
       <tr>
         <td class="strong"><a href="#de53e223de9b78bc8a076836443b2cca3f46182a" class="src_link" title="app/controllers/blogs_controller.rb">app/controllers/blogs_controller.rb</a></td>
-        <td class="red strong">66.67 %</td>
-        <td>10</td>
-        <td>6</td>
+        <td class="red strong">57.14 %</td>
+        <td>11</td>
+        <td>7</td>
         <td>4</td>
-        <td>2</td>
-        <td>1.8</td>
+        <td>3</td>
+        <td>1.6</td>
       </tr>
       
       <tr>
@@ -333,9 +333,9 @@
       <tr>
         <td class="strong"><a href="#0898d39b8306f14e22ea0b83b9b4275a06df2602" class="src_link" title="spec/features/user_creates_blog_spec.rb">spec/features/user_creates_blog_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>48</td>
-        <td>36</td>
-        <td>36</td>
+        <td>46</td>
+        <td>34</td>
+        <td>34</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -575,11 +575,11 @@
         <div class="source_table" id="de53e223de9b78bc8a076836443b2cca3f46182a">
   <div class="header">
     <h3>app/controllers/blogs_controller.rb</h3>
-    <h4><span class="red">66.67 %</span> covered</h4>
+    <h4><span class="red">57.14 %</span> covered</h4>
     <div>
-      <b>6</b> relevant lines. 
+      <b>7</b> relevant lines. 
       <span class="green"><b>4</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <span class="red"><b>3</b> lines missed.</span>
     </div>
   </div>
   
@@ -625,22 +625,28 @@
         <li class="missed" data-hits="0" data-linenumber="7">
           
           
-          <code class="ruby">    @blogs = current_user.blogs</code>
+          <code class="ruby">    user = User.find_by(nickname: params[:nickname])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="8">
           
           
+          <code class="ruby">    @blogs = user.blogs</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
+          
           <code class="ruby">    render json: @blogs</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="9">
+        <li class="never" data-hits="" data-linenumber="10">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="10">
+        <li class="never" data-hits="" data-linenumber="11">
           
           
           <code class="ruby">end</code>
@@ -3247,7 +3253,7 @@
         <li class="covered" data-hits="1" data-linenumber="12">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;/blog-markers&#39;, to: &#39;blogs#index&#39;</code>
+          <code class="ruby">  get &#39;/blog-markers/:nickname&#39;, to: &#39;blogs#index&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
@@ -3541,8 +3547,8 @@
     <h3>spec/features/user_creates_blog_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>36</b> relevant lines. 
-      <span class="green"><b>36</b> lines covered</span> and
+      <b>34</b> relevant lines. 
+      <span class="green"><b>34</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -3655,184 +3661,172 @@
         <li class="covered" data-hits="1" data-linenumber="18">
           <span class="hits">1</span>
           
-          <code class="ruby">      require &quot;pry&quot;</code>
+          <code class="ruby">      expect(page).to have_content(&quot;Title&quot;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="19">
           <span class="hits">1</span>
           
-          <code class="ruby">      binding.pry</code>
+          <code class="ruby">      expect(page).to have_content(&quot;First trip&quot;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="20">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(page).to have_content(&quot;Title&quot;)</code>
+          <code class="ruby">      expect(page).to have_content(&quot;March 17, 2015&quot;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="21">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(page).to have_content(&quot;First trip&quot;)</code>
+          <code class="ruby">      expect(page).to have_content(&quot;blog content&quot;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="22">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(page).to have_content(&quot;March 17, 2015&quot;)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="23">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      expect(page).to have_content(&quot;blog content&quot;)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="24">
-          <span class="hits">1</span>
-          
           <code class="ruby">      expect(page).to have_content(&quot;Your blog has been posted!&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="never" data-hits="" data-linenumber="23">
           
           
           <code class="ruby">    # end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="never" data-hits="" data-linenumber="24">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="never" data-hits="" data-linenumber="25">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="28">
+        <li class="covered" data-hits="1" data-linenumber="26">
           <span class="hits">1</span>
           
           <code class="ruby">  scenario &quot;user must enter all attributes&quot; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="29">
+        <li class="covered" data-hits="1" data-linenumber="27">
           <span class="hits">1</span>
           
           <code class="ruby">    user = User.create(provider: &quot;twitter&quot;, uid: &quot;1234&quot;, nickname: &quot;adomingus&quot;, token: ENV[&#39;USER_TOKEN&#39;], secret:  ENV[&#39;USER_SECRET&#39;])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="30">
+        <li class="covered" data-hits="1" data-linenumber="28">
           <span class="hits">1</span>
           
           <code class="ruby">    user.trips.create(name: &quot;First trip&quot;, start_date: &quot;2016/04/03&quot;, end_date: &quot;2016/04/13&quot;, slug: &quot;first-trip&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="31">
+        <li class="covered" data-hits="1" data-linenumber="29">
           <span class="hits">1</span>
           
           <code class="ruby">    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="32">
+        <li class="never" data-hits="" data-linenumber="30">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="33">
+        <li class="covered" data-hits="1" data-linenumber="31">
           <span class="hits">1</span>
           
           <code class="ruby">    visit new_user_blog_path</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="34">
+        <li class="covered" data-hits="1" data-linenumber="32">
           <span class="hits">1</span>
           
           <code class="ruby">    fill_in :blog_date, with: &quot;2015/03/17&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="35">
+        <li class="covered" data-hits="1" data-linenumber="33">
           <span class="hits">1</span>
           
           <code class="ruby">    fill_in :blog_content, with: &quot;blog content&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="36">
+        <li class="covered" data-hits="1" data-linenumber="34">
           <span class="hits">1</span>
           
           <code class="ruby">    fill_in :blog_latitude, with: &quot;-150&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="37">
+        <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
           <code class="ruby">    fill_in :blog_longitude, with: &quot;47&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="36">
           <span class="hits">1</span>
           
           <code class="ruby">    select &quot;First trip&quot;, from: &quot;blog[trip_id]&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="39">
+        <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
           <code class="ruby">    click_on &quot;Post Blog&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="41">
+        <li class="covered" data-hits="1" data-linenumber="39">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content(&quot;Please enter all information&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="44">
+        <li class="covered" data-hits="1" data-linenumber="42">
           <span class="hits">1</span>
           
           <code class="ruby">  scenario &quot;visitor cannot create a blog&quot; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="45">
+        <li class="covered" data-hits="1" data-linenumber="43">
           <span class="hits">1</span>
           
           <code class="ruby">    visit new_user_blog_path</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="46">
+        <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content(&quot;The page you were looking for doesn&#39;t exist&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="48">
+        <li class="never" data-hits="" data-linenumber="46">
           
           
           <code class="ruby">end</code>

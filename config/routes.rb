@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'users/:nickname/trips', to: 'trips#index', as: 'users_trips'
   get 'users/:nickname/trips/:slug', to: 'trips#show', as: 'users_trip'
-  get '/blog-markers', to: 'blogs#index'
+  get '/blog-markers/:nickname', to: 'blogs#index'
 
   resources :blogs, only: [:show], param: :slug
   resources :trips, only: [:new, :create, :update, :destroy]

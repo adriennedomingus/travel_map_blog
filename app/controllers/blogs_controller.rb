@@ -4,7 +4,8 @@ class BlogsController < ApplicationController
   end
 
   def index
-    @blogs = current_user.blogs
+    user = User.find_by(nickname: params[:nickname])
+    @blogs = user.blogs
     render json: @blogs
   end
 end

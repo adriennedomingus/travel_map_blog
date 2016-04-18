@@ -20,15 +20,11 @@ function placeMarkers(){
         var marker = new google.maps.Marker({
           position: {lat: blog.latitude, lng: blog.longitude},
           map: map,
-          title: 'Hello World!',
           url: "/blogs/" + blog.slug
         });
         google.maps.event.addListener(marker, 'click', function() {
           window.location.href = this.url;
         });
-        // marker.addListener('click', function() {
-        //   // map.setZoom(8);
-        // });
       });
     }
   });

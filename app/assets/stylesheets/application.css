@@ -92,3 +92,22 @@ body > div.container-fluid.landing-screen > div > h3 {
 .post-contents {
   font-size: 1.1em;
 }
+
+.dropdown-links, .dropdown-links:visited {
+  font-size: larger;
+  color: #777475;
+}
+
+.dropdown-links:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.btn-group {
+  margin-top: 13px;
+  margin-left: 15px;
+}
+
+ul.nav.navbar-nav > li {
+  font-size: larger;
+}

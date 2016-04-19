@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: travel_map_blog_production
-  username: travel_map_blog
-  password: <%= ENV['TRAVEL_MAP_BLOG_DATABASE_PASSWORD'] %>

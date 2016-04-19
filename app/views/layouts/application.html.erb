@@ -4,7 +4,6 @@
   <title>TravelMapBlog</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,14 +17,25 @@
         <li>  <%= link_to "Sign in with Twitter", "/auth/twitter" %> </li>
       <% end %>
     </ul>
-    <ul class="nav navbar-nav navbar-left">
-      <% if current_user %>
-        <li><%= link_to "Your Blogs", users_blogs_path(current_user.nickname)%></li>
-        <li><%= link_to "New Blog", new_user_blog_path%></li>
-        <li><%= link_to "Your Trips", users_trips_path(current_user.nickname)%></li>
-        <li><%= link_to "New Trip", new_trip_path%></li>
-      <% end %>
-    </ul>
+    <% if current_user %>
+      <ul class="nav navbar-nav navbar-left">
+        <div class="btn-group">
+          <a href="#" data-toggle="dropdown" class="dropdown-links">Blogs <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Your Blogs", users_blogs_path(current_user.nickname)%></li>
+            <li><%= link_to "New Blog", new_user_blog_path%></li>
+        </ul>
+        </div>
+        <div class="btn-group">
+          <a href="#" data-toggle="dropdown" class="dropdown-links">Trips <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Your Trips", users_trips_path(current_user.nickname)%></li>
+            <li><%= link_to "New Trip", new_trip_path%></li>
+          </ul>
+        </div>
+        <li> <%= link_to "Your Map", user_path(current_user.nickname) %></li>
+      </ul>
+    <% end %>
   </div>
 </nav>
 <div class="container flash">
@@ -36,6 +46,7 @@
   <% end %>
 </div>
 <%= yield %>
+<%= javascript_include_tag 'application' %>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS"] %>&callback=initMap"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>

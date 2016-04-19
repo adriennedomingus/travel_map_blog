@@ -1,0 +1,29 @@
+.post-title {
+    display: inline-block;
+    width: 49%;
+    text-align:left;
+    font-size: 1.5em;
+}
+
+.post-date {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+}
+
+.post-contents {
+  font-size: 1.1em;
+}
+
+.posted-date {
+  text-align: center;
+  color: grey;
+}
+
+#blog_content {
+  height: 350px;
+}
+
+.blog-title {
+  text-align: center;
+}

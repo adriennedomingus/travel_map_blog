@@ -17,7 +17,7 @@ class TripsController < ApplicationController
 
   def index
     @user = User.find_by(nickname: params[:nickname])
-    @trips = @user.trips
+    @trips = @user.trips.order(start_date: :desc)
   end
 
   def show

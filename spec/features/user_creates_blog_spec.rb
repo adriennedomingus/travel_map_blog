@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "user writes a blog" do
   scenario "logged in user creates a blog" do
     # VCR.use_cassette("blogs.create") do
-      user = User.create(provider: "twitter", uid: "1234", nickname: "adomingus", token: ENV['USER_TOKEN'], secret:  ENV['USER_SECRET'])
+      user = create_user
       user.trips.create(name: "First trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip", color: "45adf3")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -24,7 +24,7 @@ RSpec.feature "user writes a blog" do
   end
 
   scenario "user must enter all attributes" do
-    user = User.create(provider: "twitter", uid: "1234", nickname: "adomingus", token: ENV['USER_TOKEN'], secret:  ENV['USER_SECRET'])
+    user = create_user
     user.trips.create(name: "First trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip", color: "45adf3")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

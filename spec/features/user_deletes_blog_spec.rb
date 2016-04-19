@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.feature "user deletes a blog" do
   scenario "logged in user deletes their own blog" do
-    user = User.create(provider: "twitter", uid: "1234", nickname: "adomingus", token: ENV['USER_TOKEN'], secret:  ENV['USER_SECRET'])
+    user = create_user
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    blog = user.blogs.create(title: "blog title", date: "2016/03/20", content: "content", slug: "title", latitude: -40, longitude: 104)
+    _, b1 = create_trip_and_blog(user)
 
-    visit blog_path(blog.slug)
+    visit blog_path(b1.slug)
     click_on "Delete"
     expect(current_path).to eq(users_blogs_path(user.nickname))
-    expect(page).to_not have_content("blog_title")
+    expect(page).to_not have_content("blog title")
   end
 end

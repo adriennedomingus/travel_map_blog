@@ -14,26 +14,26 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-18T15:04:52-06:00">2016-04-18T15:04:52-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-18T19:03:51-06:00">2016-04-18T19:03:51-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">98.4%</span></span>
+    (<span class="covered_percent"><span class="green">98.45%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.54
+         1.53
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>41</b> files in total.
-    <b>437</b> relevant lines. 
-    <span class="green"><b>430</b> lines covered</span> and
+    <b>43</b> files in total.
+    <b>452</b> relevant lines. 
+    <span class="green"><b>445</b> lines covered</span> and
     <span class="red"><b>7</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -57,7 +57,7 @@
         <td>7</td>
         <td>7</td>
         <td>0</td>
-        <td>7.9</td>
+        <td>8.4</td>
       </tr>
       
       <tr>
@@ -111,13 +111,13 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#3faf691cd7a4950543b81276c83b64734b591da0" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
+        <td class="strong"><a href="#71db60da888a7fb8505d1986034c4141cfcde09b" class="src_link" title="app/controllers/welcome_controller.rb">app/controllers/welcome_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>5</td>
-        <td>3</td>
-        <td>3</td>
+        <td>2</td>
+        <td>1</td>
+        <td>1</td>
         <td>0</td>
-        <td>2.3</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -168,6 +168,16 @@
         <td>10</td>
         <td>0</td>
         <td>1.6</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#b211c6e6ddaf55c2d62ef476804e897f41a89ef4" class="src_link" title="app/services/unsplash_service.rb">app/services/unsplash_service.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>15</td>
+        <td>10</td>
+        <td>10</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -457,7 +467,17 @@
         <td>27</td>
         <td>27</td>
         <td>0</td>
-        <td>3.2</td>
+        <td>3.3</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#ee5de303d7ab3d6802dfd93a85326380141cab24" class="src_link" title="spec/services/unsplash_service_spec.rb">spec/services/unsplash_service_spec.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>12</td>
+        <td>7</td>
+        <td>7</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
     </tbody>
@@ -520,8 +540,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="6">
-          <span class="hits">35</span>
+        <li class="covered" data-hits="39" data-linenumber="6">
+          <span class="hits">39</span>
           
           <code class="ruby">    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]</code>
         </li>
@@ -1526,13 +1546,13 @@
   </pre>
 </div>
       
-        <div class="source_table" id="3faf691cd7a4950543b81276c83b64734b591da0">
+        <div class="source_table" id="71db60da888a7fb8505d1986034c4141cfcde09b">
   <div class="header">
-    <h3>app/controllers/users_controller.rb</h3>
+    <h3>app/controllers/welcome_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>3</b> relevant lines. 
-      <span class="green"><b>3</b> lines covered</span> and
+      <b>1</b> relevant lines. 
+      <span class="green"><b>1</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1543,28 +1563,10 @@
         <li class="covered" data-hits="1" data-linenumber="1">
           <span class="hits">1</span>
           
-          <code class="ruby">class UsersController &lt; ApplicationController</code>
+          <code class="ruby">class WelcomeController &lt; ApplicationController</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def show</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="3">
-          <span class="hits">5</span>
-          
-          <code class="ruby">    @user = User.find_by(nickname: params[:nickname]) || current_user</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="5">
+        <li class="never" data-hits="" data-linenumber="2">
           
           
           <code class="ruby">end</code>
@@ -2027,6 +2029,114 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="b211c6e6ddaf55c2d62ef476804e897f41a89ef4">
+  <div class="header">
+    <h3>app/services/unsplash_service.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>10</b> relevant lines. 
+      <span class="green"><b>10</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class UnsplashService</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def initialize</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    Unsplash.configure do |config|</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      config.application_id     = ENV[&quot;UNSPLASH_ID&quot;]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      config.application_secret = ENV[&quot;UNSPLASH_SECRET&quot;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def random_by_search(term)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    photos = Unsplash::Photo.search(term)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    count = photos.count</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    num_photo = Random.rand(0..count - 1)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    photos[num_photo].urls[&quot;full&quot;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby">end</code>
@@ -3193,13 +3303,13 @@
         <li class="covered" data-hits="1" data-linenumber="2">
           <span class="hits">1</span>
           
-          <code class="ruby">  root to: &#39;users#show&#39;</code>
+          <code class="ruby">  root to: &#39;welcome#show&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;auth/:provider/callback&#39;, to: &#39;sessions#create&#39;</code>
+          <code class="ruby">  get &#39;auth/:provider/callback&#39;, to: &#39;sessions#create&#39;, as: :login</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="4">
@@ -3217,7 +3327,7 @@
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;users/:nickname&#39;, to: &#39;users#show&#39;</code>
+          <code class="ruby">  get &#39;users/:nickname&#39;, to: &#39;users#show&#39;, as: &#39;user&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="7">
@@ -5578,8 +5688,8 @@
           <code class="ruby">  config.before(:each) do</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="23">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="32" data-linenumber="23">
+          <span class="hits">32</span>
           
           <code class="ruby">    DatabaseCleaner.strategy = :transaction</code>
         </li>
@@ -5602,8 +5712,8 @@
           <code class="ruby">  config.after(:each) do</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="27">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="32" data-linenumber="27">
+          <span class="hits">32</span>
           
           <code class="ruby">    DatabaseCleaner.clean</code>
         </li>
@@ -5687,6 +5797,96 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="41">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="ee5de303d7ab3d6802dfd93a85326380141cab24">
+  <div class="header">
+    <h3>spec/services/unsplash_service_spec.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>7</b> relevant lines. 
+      <span class="green"><b>7</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &#39;rails_helper&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">RSpec.describe UnsplashService do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  context &quot;returns a random photo by search term&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    it &quot;returns a string URL&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      VCR.use_cassette(&quot;unsplash#random&quot;) do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        service = UnsplashService.new</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        expect(service.random_by_search(&quot;rain&quot;).class).to eq(String)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
           
           
           <code class="ruby">end</code>

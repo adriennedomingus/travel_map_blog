@@ -43,3 +43,35 @@ h4 {
 .centered {
   text-align: center;
 }
+
+.landing-screen {
+  background-image: url("https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=a4347ae5a5fb1606dbe82e8c81e182b8");
+  background-size: cover;
+  margin-top: -21px;
+  height: 100%;
+  width: auto;
+}
+
+.landing-text {
+  height: 40%;
+  background: rgba(255,255,255, 0.7);
+  border-radius: 15px;
+  display: inline;
+  top: 30%;
+  position: relative;
+  text-align: center;
+  color: #6B4C37
+}
+
+body > div.container-fluid.landing-screen > div > h3 {
+  margin-bottom: 50px;
+  margin-top: 15%;
+}
+
+.landing-button {
+  padding: 15px;
+  border: 2px solid #6B4C37;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #6B4C37;
+}

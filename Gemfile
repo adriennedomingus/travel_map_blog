@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
 gem 'omniauth-twitter'
 gem 'twitter'
+gem 'unsplash'
 
 group :development, :test do
   gem 'pry-rails'

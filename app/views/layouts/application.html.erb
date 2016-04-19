@@ -12,7 +12,7 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
-        <li><%= link_to "Welcome #{current_user.nickname}", root_path %></li>
+        <li><%= link_to "Welcome #{current_user.nickname}", user_path(current_user.nickname) %></li>
         <li><%= link_to "Logout", logout_path %></li>
       <% else %>
         <li>  <%= link_to "Sign in with Twitter", "/auth/twitter" %> </li>

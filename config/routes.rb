@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'users#show'
-  get 'auth/:provider/callback', to: 'sessions#create'
+  root to: 'welcome#show'
+  get 'auth/:provider/callback', to: 'sessions#create', as: :login
   get '/logout', to: 'sessions#destroy', as: :logout
 
-  get 'users/:nickname', to: 'users#show'
+  get 'users/:nickname', to: 'users#show', as: 'user'
   get 'users/:nickname/blogs', to: 'user/blogs#index', as: 'users_blogs'
   get 'users/:nickname/blogs/:slug', to: 'user/blogs#edit', as: 'edit_user_blog'
 

@@ -31,11 +31,11 @@
         null,
         null,
         1,
-        31,
+        32,
         null,
         null,
         1,
-        31,
+        32,
         null,
         null,
         null,
@@ -280,7 +280,7 @@
         1,
         null,
         1,
-        35,
+        39,
         null,
         null,
         1,
@@ -685,6 +685,37 @@
         null,
         null
       ],
+      "/Users/adrienne/Turing/3module/travel_map_blog/spec/services/unsplash_service_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/adrienne/Turing/3module/travel_map_blog/app/services/unsplash_service.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/adrienne/Turing/3module/travel_map_blog/app/controllers/trips_controller.rb": [
         1,
         1,
@@ -823,14 +854,11 @@
         null,
         null
       ],
-      "/Users/adrienne/Turing/3module/travel_map_blog/app/controllers/users_controller.rb": [
+      "/Users/adrienne/Turing/3module/travel_map_blog/app/controllers/welcome_controller.rb": [
         1,
-        1,
-        5,
-        null,
         null
       ]
     },
-    "timestamp": 1461013492
+    "timestamp": 1461027831
   }
 }

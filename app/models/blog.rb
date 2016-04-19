@@ -2,6 +2,7 @@ class Blog < ActiveRecord::Base
   belongs_to :user
   belongs_to :trip
   before_save :set_slug
+  before_save :set_color
   validates :title, presence: :true
   validates :title, uniqueness: :true
   validates :date, presence: :true
@@ -19,5 +20,11 @@ class Blog < ActiveRecord::Base
 
   def set_slug
     self.slug = title.parameterize
+  end
+
+  def set_color
+    if trip
+      self.color = trip.color
+    end
   end
 end

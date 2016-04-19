@@ -9,6 +9,7 @@ RSpec.feature "user creates a trip" do
     fill_in :trip_name, with: "trip name"
     fill_in :trip_start_date, with: "2016/03/14"
     fill_in :trip_end_date, with: "2016/03/19"
+    fill_in :trip_color, with: '43fa43'
     click_on "Create Trip"
     expect(page).to have_content("trip name")
     expect(page).to have_content("Your trip has been created!")

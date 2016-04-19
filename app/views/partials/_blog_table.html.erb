@@ -1,16 +1,9 @@
 <div class="container">
-  <table class="table">
-    <tr>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Posted On</th>
-    </tr>
     <% blogs.each do |blog| %>
-      <tr>
-        <td><%= link_to blog.title, blog_path(blog.slug) %></td>
-        <td><%= blog.formatted_date %></td>
-        <td><%= blog.posted_on %></td>
-      </tr>
+      <p class= "post-title"><%= link_to blog.title, blog_path(blog.slug) %></p>
+      <p class= "post-date"><%= blog.formatted_date %></p>
+      <p class="post-contents"><%= blog.content.split(" ")[0..50].join(" ") %></p>
+      <hr>
     <% end %>
   </table>
 </div>

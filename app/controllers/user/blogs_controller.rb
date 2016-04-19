@@ -21,7 +21,7 @@ class User::BlogsController < User::BaseController
 
   def index
     user = User.find_by(nickname: params[:nickname])
-    @blogs = Blog.where(user_id: user.id)
+    @blogs = Blog.where(user_id: user.id).order(date: :desc)
   end
 
   def edit

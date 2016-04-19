@@ -3,10 +3,12 @@ require 'rails_helper'
 RSpec.feature "user writes a blog" do
   scenario "logged in user creates a blog" do
     # VCR.use_cassette("blogs.create") do
-      user = create_user
+      stub_omniauth
+      visit "/"
+      click_link "Sign in with Twitter"
+      user = User.last
       user.trips.create(name: "First trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip", color: "45adf3")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
       visit new_user_blog_path
       fill_in :blog_title, with: "Title"
       fill_in :blog_date, with: "2015/03/17"

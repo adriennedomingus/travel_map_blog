@@ -15,25 +15,26 @@ function initMap() {
 function placeMarkers(){
   var url = document.URL.split("/")
   var nickname = url[url.length - 1]
-  $.ajax({
-    url: '/blog-markers/' + nickname,
-    success: function(data) {
-      $.each(data, function(key, blog) {
-        if(blog.color) {
-          var pinColor = blog.color
-        } else {
-          var pinColor = "FE7569"
-        }
-        var marker = new google.maps.Marker({
-          position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
-          map: map,
-          icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-          url: "/blogs/" + blog.slug
-        });
-        google.maps.event.addListener(marker, 'click', function() {
-          window.location.href = this.url;
-        });
+  $.getJSON('/blog-markers/' + nickname, function(data) {
+    $.each(data, function(key, blog) {
+      var pinColor = setPinColor(blog);
+      var marker = new google.maps.Marker({
+        position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
+        map: map,
+        icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        url: "/blogs/" + blog.slug
       });
-    }
-  });
+      google.maps.event.addListener(marker, 'click', function() {
+        window.location.href = this.url;
+      });
+    });
+  })
+}
+
+function setPinColor(blog){
+  if(blog.color) {
+    return blog.color;
+  } else {
+    return "FE7569";
+  }
 }

@@ -1,3 +1,7 @@
 <div class="container">
   <%= image_tag @photo.image.url, width: 400 %>
+  <% if @photo.latitude %>
+    <%= @photo.latitude.to_f %>
+    <%= @photo.longitude.to_f %>
+  <% end %>
 </div>

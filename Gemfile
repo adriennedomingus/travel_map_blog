@@ -14,7 +14,7 @@ gem 'twitter'
 gem 'unsplash'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk', '>= 2.0.0'
-gem 'photogeoloader'
+gem 'exifr'
 
 group :development, :test do
   gem 'pry-rails'

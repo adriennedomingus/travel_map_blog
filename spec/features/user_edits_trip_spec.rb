@@ -15,6 +15,19 @@ RSpec.feature "user edits a trip" do
     expect(page).to have_content("Your trip has been updated!")
   end
 
+  scenario "logged in user must enter all information" do
+    user = create_user
+    t1, _ = create_trip_and_blog(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit users_trip_path(user, t1.slug)
+    click_on "Edit"
+    fill_in :trip_name, with: ""
+    click_on "Update Trip"
+
+    expect(page).to have_content("Please enter all information")
+  end
+
   scenario "user cannot edit another users' trip" do
     user = create_user
     other_user = User.create(provider: "twitter", uid: "123456", nickname: "adomingus2", token: ENV['USER_TOKEN'], secret:  ENV['USER_SECRET'])

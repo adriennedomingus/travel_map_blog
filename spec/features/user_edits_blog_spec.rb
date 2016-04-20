@@ -14,6 +14,18 @@ RSpec.feature "user edits a blog" do
     expect(page).to have_content("Your blog has been updated!")
   end
 
+  scenario "logged in user must enter all information" do
+    user = create_user
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    _, b1 = create_trip_and_blog(user)
+
+    visit blog_path(b1.slug)
+    click_link "Edit"
+    fill_in :blog_title, with: ""
+    click_on "Update Blog"
+    expect(page).to have_content("Please enter all information")
+  end
+
   scenario "visitor cannot edit a blog" do
     user = create_user
     _, b1 = create_trip_and_blog(user)

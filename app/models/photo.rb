@@ -14,7 +14,6 @@ class Photo < ActiveRecord::Base
     path: ":rails_root/public/system/:attachment/:id/:style/:filename",
     url: "/system/:attachment/:id/:style/:filename",
     styles: {
-      square: '200x200#',
       large: '500x500>'
     }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/

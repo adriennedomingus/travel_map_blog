@@ -1,7 +1,7 @@
 class WeatherService
   def initialize
     @_connection = Faraday.new("http://api.worldweatheronline.com/premium/v1/past-weather.ashx")
-    connection.params['key'] = "046f25cbe2ad431a902190109162004"
+    connection.params['key'] = ENV["WEATHER_KEY"]
   end
 
   def weather_description(blog)

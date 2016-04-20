@@ -1,9 +1,10 @@
-<%= link_to photo.title, photo_path(photo)%>
+<h4><%= link_to photo.title, photo_path(photo)%></h4>
 <% if photo.trip %>
-  <%= link_to photo.trip.name, trip_path(photo.trip.slug) %>
+  <p class="centered"><%= link_to photo.trip.name, trip_path(photo.trip.slug) %></p>
 <% end %>
 <% if photo.blog %>
-  <%= link_to photo.blog.title, blog_path(photo.blog.slug) %>
+  <p class="centered"><%= link_to photo.blog.title, blog_path(photo.blog.slug) %></p>
 <% end %>
-<%= image_tag photo.image.url(:medium) %>
-<%= photo.description %>
+<%= image_tag photo.image.url(:large), class: "centered" %>
+<br>
+<p><%= photo.description %></p>

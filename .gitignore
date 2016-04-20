@@ -12,7 +12,10 @@
 !/log/.keep
 /tmp
 /coverage/*
+/coverage/.*
 /spec/cassettes/*
+/public/system/*
+
 
 # Ignore application configuration
 /config/application.yml

@@ -10,4 +10,12 @@
     <p class="centered"><%= link_to "Delete", user_blog_path(@blog), method: :delete %></p>
   <% end %>
   <p><%= @blog.content %></p>
+  <hr>
+  <h3 class="centered">Photos</h3>
+  <br>
+  <% @blog.photos.each do |photo| %>
+    <div class="col-md-4">
+      <%= render partial: "partials/photo", locals: { photo: photo } %>
+    </div>
+  <% end %>
 </div>

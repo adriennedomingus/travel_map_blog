@@ -7,11 +7,7 @@ class PhotosController < ApplicationController
   def create
     @photo = current_user.photos.new(photo_params)
     if @photo.save
-      if @photo.blog && @photo.blog.trip_id
-        @photo.set_trip_and_color
-      end
-      gps_data = EXIFR::JPEG.new(photo_params[:image].tempfile).gps
-      @photo.set_location(gps_data)
+      @photo.set_location(photo_params)
       flash[:success] = "Your photo has been uploaded!"
       redirect_to photo_path(@photo)
     else

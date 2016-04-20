@@ -1,6 +1,15 @@
-<h1 class="centered"><%= @trip.name %></h1>
-<% if current_user == @trip.user %>
-  <p class="centered"> <%= link_to "Edit", edit_trip_path(@trip.slug)%></p>
-  <p class="centered"> <%= link_to "Delete", trip_path(@trip), method: :delete %></p>
-<% end %>
-<%= render partial: "partials/blog_table", locals: {blogs: @trip.blogs.order(date: :desc) } %>
+<div class="container">
+  <h1 class="centered"><%= @trip.name %></h1>
+  <% if current_user == @trip.user %>
+    <p class="centered"> <%= link_to "Edit", edit_trip_path(@trip.slug)%></p>
+    <p class="centered"> <%= link_to "Delete", trip_path(@trip), method: :delete %></p>
+  <% end %>
+  <%= render partial: "partials/blog_table", locals: {blogs: @trip.blogs.order(date: :desc) } %>
+  <h3 class="centered">Photos</h3>
+  <br>
+  <% @trip.photos.each do |photo| %>
+    <div class="col-md-4">
+      <%= render partial: "partials/photo", locals: { photo: photo } %>
+    </div>
+  <% end %>
+</div>

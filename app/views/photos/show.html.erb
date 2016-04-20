@@ -1,7 +1,3 @@
 <div class="container">
-  <%= image_tag @photo.image.url(:medium) %>
-  <% if @photo.latitude %>
-    <%= @photo.latitude.to_f %>
-    <%= @photo.longitude.to_f %>
-  <% end %>
+  <%= render partial: "partials/photo", locals: { photo: @photo } %>
 </div>

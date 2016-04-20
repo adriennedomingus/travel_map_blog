@@ -1,5 +1,6 @@
 class Trip < ActiveRecord::Base
   has_many :blogs
+  has_many :photos
   belongs_to :user
   before_save :set_slug
   validates :name, presence: :true, uniqueness: :true

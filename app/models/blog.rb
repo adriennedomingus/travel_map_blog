@@ -1,6 +1,7 @@
 class Blog < ActiveRecord::Base
   belongs_to :user
   belongs_to :trip
+  has_many :photos
   before_save :set_slug
   before_save :set_color
   validates :title, presence: :true

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :blogs, only: [:show], param: :slug
   resources :trips, only: [:new, :create, :update, :destroy]
   resources :trips, only: [:show, :edit], param: :slug
-  resources :photos, only: [:new, :create, :show]
+  resources :photos, only: [:new, :create, :show, :index]
 
   namespace :user do
     resources :blogs, only: [:new, :create, :update, :destroy]

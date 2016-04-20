@@ -12,4 +12,14 @@ class Photo < ActiveRecord::Base
       medium: '300x300>'
     }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
+  def set_location(gps_data)
+    if gps_data
+      self.update_attribute(:latitude, gps_data.latitude)
+      self.update_attribute(:longitude, gps_data.longitude)
+    elsif self.blog
+      self.update_attribute(:latitude, blog.latitude)
+      self.update_attribute(:longitude, blog.longitude)
+    end
+  end
 end

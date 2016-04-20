@@ -11,10 +11,7 @@ class PhotosController < ApplicationController
         @photo.trip = @photo.blog.trip
       end
       gps_data = EXIFR::JPEG.new(photo_params[:image].tempfile).gps
-      if gps_data
-        @photo.update_attribute(:latitude, gps_data.latitude)
-        @photo.update_attribute(:longitude, gps_data.longitude)
-      end
+      @photo.set_location(gps_data)
       flash[:success] = "Your photo has been uploaded!"
       redirect_to photo_path(@photo)
     else

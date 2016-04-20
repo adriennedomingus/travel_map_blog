@@ -12,8 +12,8 @@ RSpec.feature "user uploads a photo" do
     select b1.title, from: "photo[blog_id]"
     attach_file "Image", "spec/asset_spec/photos/cat.jpg"
     click_on "Create Photo"
-    
+
     expect(current_path).to eq(photo_path(Photo.last))
-    expect(page).to have_css("img[src='#{Photo.last.image}']")
+    expect(page).to have_css("img[alt='Cat']")
   end
 end

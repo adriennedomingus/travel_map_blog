@@ -2,8 +2,11 @@ class Blog < ActiveRecord::Base
   belongs_to :user
   belongs_to :trip
   has_many :photos
+  
   before_save :set_slug
   before_save :set_color
+  before_save :set_weather
+
   validates :title, presence: :true
   validates :title, uniqueness: :true
   validates :date, presence: :true
@@ -27,5 +30,9 @@ class Blog < ActiveRecord::Base
     if trip
       self.color = trip.color
     end
+  end
+
+  def set_weather
+    self.weather = Weather.description(self)
   end
 end

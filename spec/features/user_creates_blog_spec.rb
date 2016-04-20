@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "user writes a blog" do
   scenario "logged in user creates a blog" do
-    # VCR.use_cassette("blogs.create") do
+    VCR.use_cassette("blog.hand_create") do
       stub_omniauth
       visit "/"
       click_link "Sign in with Twitter"
@@ -13,7 +13,7 @@ RSpec.feature "user writes a blog" do
       fill_in :blog_title, with: "Title"
       fill_in :blog_date, with: "2015/03/17"
       fill_in :blog_content, with: "blog content"
-      fill_in :blog_latitude, with: "-150.234"
+      fill_in :blog_latitude, with: "-45.234"
       fill_in :blog_longitude, with: "47.5"
       select "First trip", from: "blog[trip_id]"
       click_on "Post Blog"
@@ -22,7 +22,7 @@ RSpec.feature "user writes a blog" do
       expect(page).to have_content("March 17, 2015")
       expect(page).to have_content("blog content")
       expect(page).to have_content("Your blog has been posted!")
-    # end
+    end
   end
 
   scenario "user must enter all attributes" do

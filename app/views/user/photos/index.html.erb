@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 class="centered"> Your Photos </h1>
+  <% @photos.each do |photo| %>
+    <div class="col-md-4">
+      <%= render partial: "partials/photo", locals: { photo: photo } %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<%= link_to photo.title, photo_path(photo)%>
+<% if photo.trip %>
+  <%= link_to photo.trip.name, trip_path(photo.trip.slug) %>
+<% end %>
+<% if photo.blog %>
+  <%= link_to photo.blog.title, blog_path(photo.blog.slug) %>
+<% end %>
+<%= image_tag photo.image.url(:medium) %>
+<%= photo.description %>

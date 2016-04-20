@@ -800,8 +800,6 @@
         2,
         2,
         2,
-        null,
-        null,
         null
       ],
       "/Users/adrienne/Turing/3module/travel_map_blog/app/models/blog.rb": [
@@ -1235,6 +1233,6 @@
         null
       ]
     },
-    "timestamp": 1461187076
+    "timestamp": 1461195493
   }
 }

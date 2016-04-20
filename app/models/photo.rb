@@ -4,8 +4,9 @@ class Photo < ActiveRecord::Base
   belongs_to :trip
 
   attr_accessor :image
-  has_attached_file :image, :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-    :url => "/system/:attachment/:id/:style/:filename",
+  has_attached_file :image,
+    path: ":rails_root/public/system/:attachment/:id/:style/:filename",
+    url: "/system/:attachment/:id/:style/:filename",
     styles: {
       favicon: '16x16>',
       square: '200x200#',
@@ -21,5 +22,10 @@ class Photo < ActiveRecord::Base
       self.update_attribute(:latitude, blog.latitude)
       self.update_attribute(:longitude, blog.longitude)
     end
+  end
+
+  def set_trip_and_color
+    self.trip = blog.trip
+    self.color = blog.trip.color
   end
 end

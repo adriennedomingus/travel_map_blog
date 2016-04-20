@@ -33,6 +33,13 @@
             <li><%= link_to "New Trip", new_trip_path%></li>
           </ul>
         </div>
+        <div class="btn-group">
+          <a href="#" data-toggle="dropdown" class="dropdown-links">Photos <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Your Photos", user_photos_path(current_user.nickname)%></li>
+            <li><%= link_to "New Photo", new_photo_path%></li>
+          </ul>
+        </div>
         <li> <%= link_to "Your Map", user_path(current_user.nickname) %></li>
       </ul>
     <% end %>

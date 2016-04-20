@@ -7,14 +7,17 @@ Rails.application.routes.draw do
   get 'users/:nickname/blogs', to: 'user/blogs#index', as: 'users_blogs'
   get 'users/:nickname/blogs/:slug', to: 'user/blogs#edit', as: 'edit_user_blog'
 
+  get 'users/:nickname/photos', to: 'user/photos#index', as: 'user_photos'
+
   get 'users/:nickname/trips', to: 'trips#index', as: 'users_trips'
   get 'users/:nickname/trips/:slug', to: 'trips#show', as: 'users_trip'
   get '/blog-markers/:nickname', to: 'blogs#index'
+  get '/photo-markers/:nickname', to: 'photos#index'
 
   resources :blogs, only: [:show], param: :slug
   resources :trips, only: [:new, :create, :update, :destroy]
   resources :trips, only: [:show, :edit], param: :slug
-  resources :photos, only: [:new, :create, :show, :index]
+  resources :photos, only: [:new, :create, :show]
 
   namespace :user do
     resources :blogs, only: [:new, :create, :update, :destroy]

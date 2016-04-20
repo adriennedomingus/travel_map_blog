@@ -1,6 +1,7 @@
 $( document ).ready(function() {
   initMap();
-  placeMarkers();
+  placeBlogMarkers();
+  placePhotoMarkers();
 });
 
 var map;
@@ -12,7 +13,7 @@ function initMap() {
   });
 }
 
-function placeMarkers(){
+function placeBlogMarkers(){
   var url = document.URL.split("/")
   var nickname = url[url.length - 1]
   $.getJSON('/blog-markers/' + nickname, function(data) {
@@ -21,8 +22,35 @@ function placeMarkers(){
       var marker = new google.maps.Marker({
         position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
         map: map,
-        icon: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        icon: {
+                  path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                  scale: 4,
+                  strokeColor: "#" + pinColor,
+               },
         url: "/blogs/" + blog.slug
+      });
+      google.maps.event.addListener(marker, 'click', function() {
+        window.location.href = this.url;
+      });
+    });
+  })
+}
+
+function placePhotoMarkers(){
+  var url = document.URL.split("/")
+  var nickname = url[url.length - 1]
+  $.getJSON('/photo-markers/' + nickname, function(data) {
+    $.each(data, function(key, photo) {
+      var pinColor = setPinColor(photo);
+      var marker = new google.maps.Marker({
+        position: {lat: parseFloat(photo.latitude), lng: parseFloat(photo.longitude)},
+        map: map,
+        icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 5,
+              strokeColor:  "#" + pinColor,
+              },
+        url: "/photos/" + photo.id
       });
       google.maps.event.addListener(marker, 'click', function() {
         window.location.href = this.url;

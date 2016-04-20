@@ -1,5 +1,5 @@
 <div class="container">
-  <%= image_tag @photo.image.url, width: 400 %>
+  <%= image_tag @photo.image.url(:medium) %>
   <% if @photo.latitude %>
     <%= @photo.latitude.to_f %>
     <%= @photo.longitude.to_f %>

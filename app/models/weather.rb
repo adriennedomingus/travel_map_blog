@@ -4,6 +4,8 @@ class Weather
   end
 
   def self.description(blog)
-    all_data(blog)["data"]["weather"].first["hourly"][4]["weatherDesc"].first["value"]
+    if all_data(blog)["data"]["weather"]
+      all_data(blog)["data"]["weather"].first["hourly"][4]["weatherDesc"].first["value"]
+    end
   end
 end

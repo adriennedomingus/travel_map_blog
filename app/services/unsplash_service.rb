@@ -10,6 +10,6 @@ class UnsplashService
     photos = Unsplash::Photo.search(term)
     count = photos.count
     num_photo = Random.rand(0..count - 1)
-    photos[num_photo].urls["full"]
+    photos[num_photo].urls["regular"]
   end
 end

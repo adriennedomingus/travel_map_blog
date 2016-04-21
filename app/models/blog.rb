@@ -37,7 +37,11 @@ class Blog < ActiveRecord::Base
   end
 
   def get_image
-    term = self.weather.split(" ")[-1]
+    if self.weather
+      term = self.weather.split(" ")[-1]
+    else
+      term = "travel"
+    end
     UnsplashService.new.random_by_search(term)
   end
 end

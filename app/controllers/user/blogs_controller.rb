@@ -42,7 +42,7 @@ class User::BlogsController < User::BaseController
 
   def destroy
     Blog.find(params[:id]).destroy
-
+    flash[:success] = "Your blog has been deleted!"
     redirect_to users_blogs_path(current_user.nickname)
   end
 

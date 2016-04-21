@@ -11,7 +11,6 @@ class WeatherService
   end
 
   private
-
     def connection
       @_connection
     end

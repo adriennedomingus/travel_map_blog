@@ -14,4 +14,17 @@ RSpec.describe BlogsController, type: :controller do
       end
     end
   end
+
+  describe "GET weather" do
+    it "gets the image associated with a blog's weather" do
+      VCR.use_cassette("blog#weather") do
+        user = create_user
+        _, b1 = create_trip_and_blog(user)
+        get :weather, slug: b1.slug
+        image = JSON.parse(response.body)
+
+        (image["image"]).should match(/https:\/\/images.unsplash.com\/.+/)
+      end
+    end
+  end
 end

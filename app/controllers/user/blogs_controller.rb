@@ -8,9 +8,7 @@ class User::BlogsController < User::BaseController
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
-      current_user.blogs << @blog
-      # service = TwitterService.new(current_user)
-      # service.post_tweet(blog_url(@blog.slug))
+      BlogCreator.new(@blog, current_user, blog_url(@blog.slug)).setup
       flash[:success] = "Your blog has been posted!"
       redirect_to blog_path(@blog.slug)
     else
@@ -32,6 +30,7 @@ class User::BlogsController < User::BaseController
   def update
     @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
+      BlogCreator.new(@blog, current_user, blog_url(@blog.slug)).update
       flash[:success] = "Your blog has been updated!"
       redirect_to blog_path(@blog.slug)
     else

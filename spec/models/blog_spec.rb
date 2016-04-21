@@ -6,6 +6,7 @@ RSpec.describe Blog, type: :model do
   it { should validate_presence_of :title }
   it { should validate_presence_of :date }
   it { should validate_presence_of :content }
+  it { should validate_presence_of :location }
 
   it "returns an image based on weather" do
     VCR.use_cassette("blog#get_image") do

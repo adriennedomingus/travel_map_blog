@@ -11,8 +11,10 @@ class Blog < ActiveRecord::Base
   validates :title, uniqueness: :true
   validates :date, presence: :true
   validates :content, presence: :true
-  validates :latitude, presence: :true
-  validates :longitude, presence: :true
+  validates :location, presence: :true
+
+  geocoded_by :location
+  after_validation :geocode
 
   def formatted_date
     date.strftime("%B %d, %Y")

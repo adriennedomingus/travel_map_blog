@@ -23,13 +23,13 @@ module SpecHelpers
 
   def create_trip_and_blog(user)
     t1 = user.trips.create(name: "First trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip", color: "45adf3")
-    b1 = t1.blogs.create(title: "Updated Title", date: "2016/03/17", content: "content", slug: "updated-title", latitude: -25.0, longitude: 131.0, user_id: user.id)
+    b1 = t1.blogs.create(title: "Updated Title", date: "2016/03/17", content: "content", slug: "updated-title", location: "London, OH", user_id: user.id)
     [t1, b1]
   end
 
   def create_second_trip_and_blog(user)
     t1 = user.trips.create(name: "Second trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip", color: "45adf3")
-    b1 = t1.blogs.create(title: "Second Title", date: "2016/03/19", content: "content", slug: "second-title", latitude: -25.0, longitude: 131.0)
+    b1 = t1.blogs.create(title: "Second Title", date: "2016/03/19", content: "content", slug: "second-title", location: "Denver, CO")
     [t1, b1]
   end
 

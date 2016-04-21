@@ -119,6 +119,9 @@ GEM
       multi_json (~> 1.2)
     jmespath (1.2.4)
       json_pure (>= 1.8.1)
+    jquery-minicolors-rails (2.2.3.0)
+      jquery-rails
+      rails (>= 3.2.8)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -300,6 +303,7 @@ DEPENDENCIES
   figaro
   geocoder
   jbuilder (~> 2.0)
+  jquery-minicolors-rails
   jquery-rails
   launchy
   omniauth-twitter

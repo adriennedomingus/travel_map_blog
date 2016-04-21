@@ -25,7 +25,7 @@ function placeBlogMarkers(){
         icon: {
                   path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
                   scale: 4,
-                  strokeColor: "#" + pinColor,
+                  strokeColor: pinColor,
                },
         url: "/blogs/" + blog.slug
       });
@@ -48,7 +48,7 @@ function placePhotoMarkers(){
         icon: {
               path: google.maps.SymbolPath.CIRCLE,
               scale: 5,
-              strokeColor:  "#" + pinColor,
+              strokeColor: pinColor,
               },
         url: "/photos/" + photo.id
       });
@@ -63,6 +63,6 @@ function setPinColor(blog){
   if(blog.color) {
     return blog.color;
   } else {
-    return "FE7569";
+    return "#FE7569";
   }
 }

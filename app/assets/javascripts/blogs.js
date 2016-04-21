@@ -1,5 +1,6 @@
 $(document).ready(function(){
   setBackground();
+  $("input[name='trip[color]']").minicolors()
 });
 
 function setBackground() {

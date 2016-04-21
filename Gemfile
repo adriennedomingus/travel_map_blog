@@ -16,6 +16,7 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk', '>= 2.0.0'
 gem 'exifr'
 gem 'geocoder'
+gem 'jquery-minicolors-rails'
 
 group :development, :test do
   gem 'pry-rails'

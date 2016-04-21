@@ -28,7 +28,7 @@ module SpecHelpers
   end
 
   def create_second_trip_and_blog(user)
-    t1 = user.trips.create(name: "Second trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip", color: "45adf3")
+    t1 = user.trips.create(name: "Second trip", start_date: "2016/04/03", end_date: "2016/04/13", slug: "first-trip", color: "#45adf3")
     b1 = t1.blogs.create(title: "Second Title", date: "2016/03/19", content: "content", slug: "second-title", location: "Denver, CO")
     [t1, b1]
   end

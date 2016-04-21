@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'users/:nickname/trips/:slug', to: 'trips#show', as: 'users_trip'
   get '/blog-markers/:nickname', to: 'blogs#index'
   get '/photo-markers/:nickname', to: 'photos#index'
+  get '/blog-image/:slug', to: 'blogs#weather'
 
   resources :blogs, only: [:show], param: :slug
   resources :trips, only: [:new, :create, :update, :destroy]

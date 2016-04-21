@@ -8,4 +8,10 @@ class BlogsController < ApplicationController
     @blogs = user.blogs
     render json: @blogs
   end
+
+  def weather
+    blog = Blog.find_by(slug: params[:slug])
+    @image = blog.get_image
+    render json: {image: @image }
+  end
 end

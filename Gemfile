@@ -17,6 +17,7 @@ gem 'aws-sdk', '>= 2.0.0'
 gem 'exifr'
 gem 'geocoder'
 gem 'jquery-minicolors-rails'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'pry-rails'

@@ -10,8 +10,12 @@ class BlogsController < ApplicationController
   end
 
   def weather
-    blog = Blog.find_by(slug: params[:slug])
-    @image = blog.get_image
-    render json: {image: @image }
+      blog = Blog.find_by(slug: params[:slug])
+    if blog
+      @image = blog.get_image
+      render json: {image: @image }
+    else
+      render json: {image: nil}
+    end
   end
 end

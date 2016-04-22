@@ -51,6 +51,12 @@ class TripsController < ApplicationController
     redirect_to users_trips_path(current_user.nickname)
   end
 
+  def color
+    user = User.find_by(nickname: params[:nickname])
+    @trips = user.trips
+    render json: @trips
+  end
+
   private
     def trip_params
       params.require(:trip).permit(:name, :start_date, :end_date, :color)

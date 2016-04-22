@@ -2,6 +2,7 @@ $( document ).ready(function() {
   initMap();
   placeBlogMarkers();
   placePhotoMarkers();
+  setLegend();
 });
 
 var map;
@@ -11,6 +12,21 @@ function initMap() {
     center: {lat: 50.0, lng: 0},
     zoom: 2
   });
+}
+
+function setLegend(){
+  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(
+  document.getElementById('legend'));
+  var legend = document.getElementById('legend');
+  var url = document.URL.split("/")
+  var nickname = url[url.length - 1]
+  $.getJSON('/trip-colors/' + nickname, function(data){
+    $.each(data, function(key, trip){
+      var p = document.createElement('p');
+      p.innerHTML =  "<div class='square' id=" + trip.slug + "><style> #" + trip.slug + " { border: 5px solid" + trip.color + "; }</style></div><span class='trip-name'>" + trip.name + "</span>";
+      legend.appendChild(p);
+    })
+  })
 }
 
 function placeBlogMarkers(){

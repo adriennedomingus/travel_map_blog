@@ -4,6 +4,11 @@ RSpec.feature "user writes a blog" do
   scenario "logged in user creates a blog" do
     VCR.use_cassette("blog.hand_create") do
       stub_omniauth
+      
+      twitter = double('twitter')
+      allow(twitter).to receive(:post_tweet)
+      allow(TwitterService).to receive(:new).and_return(twitter)
+
       visit "/"
       click_link "Sign in with Twitter"
       user = User.last

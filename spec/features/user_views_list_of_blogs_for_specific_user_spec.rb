@@ -4,6 +4,11 @@ RSpec.feature "user views index for specific user" do
   scenario "user  views index for specific user" do
     VCR.use_cassette("blog.lots") do
       user = create_user
+
+      twitter = double('twitter')
+      allow(twitter).to receive(:post_tweet)
+      allow(TwitterService).to receive(:new).and_return(twitter)
+      
       b1 = user.blogs.create(title: "title", date: "2016/03/19", content: "some content", slug: "title", location: "Denver, CO")
       b2 = user.blogs.create(title: "other title", date: "2016/03/25", content: "some more content", slug: "other-title", location: "Denver, CO")
       b3 = user.blogs.create(title: "third title", date: "2016/03/29", content: "final content", slug: "third-title", location: "Denver, CO")

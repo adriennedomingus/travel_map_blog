@@ -15,7 +15,7 @@ class BlogCreator
 
   def setup
     update
-    # Tweet.new(@blog, current_user, path)
+    Tweet.new(@blog, current_user, path)
     current_user.blogs << @blog
   end
 

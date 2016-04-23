@@ -3,24 +3,7 @@ $( document ).ready(function() {
   placeBlogMarkers();
   placePhotoMarkers();
   setLegend();
-
-  var photoBlogControlDiv = document.createElement('div');
-  var photoBlogControl = new PhotoBlogControl(photoBlogControlDiv, map);
-
-  photoBlogControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(photoBlogControlDiv);
-  
-  var blogControlDiv = document.createElement('div');
-  var blogControl = new BlogControl(blogControlDiv, map);
-
-  blogControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(blogControlDiv);
-
-  var photoControlDiv = document.createElement('div');
-  var photoControl = new PhotoControl(photoControlDiv, map);
-
-  photoControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(photoControlDiv);
+  setViewButtons();
 });
 
 var map;
@@ -31,6 +14,7 @@ function initMap() {
     zoom: 2
   });
 }
+
 
 function setLegend(){
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(
@@ -57,10 +41,8 @@ function setLegend(){
 }
 
 var blogMarkers = []
-
 function placeBlogMarkers(){
-  var url = document.URL.split("/")
-  var nickname = url[url.length - 1]
+  var nickname = getNickname();
   $.getJSON('/blog-markers/' + nickname, function(data) {
     $.each(data, function(key, blog) {
       var pinColor = setPinColor(blog);
@@ -85,8 +67,7 @@ function placeBlogMarkers(){
 
 var photoMarkers = []
 function placePhotoMarkers(){
-  var url = document.URL.split("/")
-  var nickname = url[url.length - 1]
+  var nickname = getNickname();
   $.getJSON('/photo-markers/' + nickname, function(data) {
     $.each(data, function(key, photo) {
       var pinColor = setPinColor(photo);
@@ -117,58 +98,15 @@ function setPinColor(blog){
 }
 
 function BlogControl(controlDiv, map) {
-
-  // Set CSS for the control border.
-  var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = '#fff';
-  controlUI.style.border = '2px solid grey';
-  controlUI.style.borderRadius = '3px';
-  controlUI.style.cursor = 'pointer';
-  controlUI.style.marginBottom = '22px';
-  controlUI.style.textAlign = 'center';
-  controlDiv.appendChild(controlUI);
-
-  // Set CSS for the control interior.
-  var controlText = document.createElement('div');
-  controlText.style.color = 'rgb(25,25,25)';
-  controlText.style.fontSize = '16px';
-  controlText.style.lineHeight = '38px';
-  controlText.style.paddingLeft = '5px';
-  controlText.style.paddingRight = '5px';
-  controlText.innerHTML = 'Blogs Only';
-  controlUI.appendChild(controlText);
-
-  // Setup the click event listeners
+  var controlUI = setCSS(controlDiv, map, "Blogs Only");
   controlUI.addEventListener('click', function() {
     setMapOnAllBlog(map);
     clearPhotoMarkers();
   });
-
 }
 
 function PhotoControl(controlDiv, map) {
-
-  // Set CSS for the control border.
-  var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = '#fff';
-  controlUI.style.border = '2px solid grey';
-  controlUI.style.borderRadius = '3px';
-  controlUI.style.cursor = 'pointer';
-  controlUI.style.marginBottom = '22px';
-  controlUI.style.textAlign = 'center';
-  controlDiv.appendChild(controlUI);
-
-  // Set CSS for the control interior.
-  var controlText = document.createElement('div');
-  controlText.style.color = 'rgb(25,25,25)';
-  controlText.style.fontSize = '16px';
-  controlText.style.lineHeight = '38px';
-  controlText.style.paddingLeft = '5px';
-  controlText.style.paddingRight = '5px';
-  controlText.innerHTML = 'Photos Only';
-  controlUI.appendChild(controlText);
-
-  // Setup the click event listeners
+  var controlUI = setCSS(controlDiv, map, "Photos Only");
   controlUI.addEventListener('click', function() {
     setMapOnAllPhoto(map);
     clearBlogMarkers();
@@ -176,33 +114,11 @@ function PhotoControl(controlDiv, map) {
 }
 
 function PhotoBlogControl(controlDiv, map) {
-
-  // Set CSS for the control border.
-  var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = '#fff';
-  controlUI.style.border = '2px solid grey';
-  controlUI.style.borderRadius = '3px';
-  controlUI.style.cursor = 'pointer';
-  controlUI.style.marginBottom = '22px';
-  controlUI.style.textAlign = 'center';
-  controlDiv.appendChild(controlUI);
-
-  // Set CSS for the control interior.
-  var controlText = document.createElement('div');
-  controlText.style.color = 'rgb(25,25,25)';
-  controlText.style.fontSize = '16px';
-  controlText.style.lineHeight = '38px';
-  controlText.style.paddingLeft = '5px';
-  controlText.style.paddingRight = '5px';
-  controlText.innerHTML = 'Photos & Blogs';
-  controlUI.appendChild(controlText);
-
-  // Setup the click event listeners
+  var controlUI = setCSS(controlDiv, map, "Photos & Blogs");
   controlUI.addEventListener('click', function() {
     setMapOnAllBlog(map);
     setMapOnAllPhoto(map);
   });
-
 }
 
 function setMapOnAllBlog(map) {
@@ -223,4 +139,47 @@ function clearBlogMarkers() {
 
 function clearPhotoMarkers() {
   setMapOnAllPhoto(null);
+}
+
+function setViewButtons() {
+  var photoBlogControlDiv = document.createElement('div');
+  var photoBlogControl = new PhotoBlogControl(photoBlogControlDiv, map);
+  photoBlogControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(photoBlogControlDiv);
+
+  var blogControlDiv = document.createElement('div');
+  var blogControl = new BlogControl(blogControlDiv, map);
+  blogControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(blogControlDiv);
+
+  var photoControlDiv = document.createElement('div');
+  var photoControl = new PhotoControl(photoControlDiv, map);
+  photoControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(photoControlDiv);
+}
+
+function setCSS(controlDiv, map, text) {
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#fff';
+  controlUI.style.border = '2px solid grey';
+  controlUI.style.borderRadius = '3px';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.marginBottom = '22px';
+  controlUI.style.textAlign = 'center';
+  controlDiv.appendChild(controlUI);
+
+  var controlText = document.createElement('div');
+  controlText.style.color = 'rgb(25,25,25)';
+  controlText.style.fontSize = '16px';
+  controlText.style.lineHeight = '38px';
+  controlText.style.paddingLeft = '5px';
+  controlText.style.paddingRight = '5px';
+  controlText.innerHTML = text;
+  controlUI.appendChild(controlText);
+  return controlUI;
+}
+
+function getNickname(){
+  var url = document.URL.split("/")
+  return url[url.length - 1]
 }

@@ -3,6 +3,24 @@ $( document ).ready(function() {
   placeBlogMarkers();
   placePhotoMarkers();
   setLegend();
+
+  var photoBlogControlDiv = document.createElement('div');
+  var photoBlogControl = new PhotoBlogControl(photoBlogControlDiv, map);
+
+  photoBlogControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(photoBlogControlDiv);
+  
+  var blogControlDiv = document.createElement('div');
+  var blogControl = new BlogControl(blogControlDiv, map);
+
+  blogControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(blogControlDiv);
+
+  var photoControlDiv = document.createElement('div');
+  var photoControl = new PhotoControl(photoControlDiv, map);
+
+  photoControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(photoControlDiv);
 });
 
 var map;
@@ -38,6 +56,8 @@ function setLegend(){
   legend.appendChild(tripLink);
 }
 
+var blogMarkers = []
+
 function placeBlogMarkers(){
   var url = document.URL.split("/")
   var nickname = url[url.length - 1]
@@ -55,6 +75,7 @@ function placeBlogMarkers(){
                },
         url: "/blogs/" + blog.slug
       });
+      blogMarkers.push(marker);
       google.maps.event.addListener(marker, 'click', function() {
         window.location.href = this.url;
       });
@@ -62,6 +83,7 @@ function placeBlogMarkers(){
   })
 }
 
+var photoMarkers = []
 function placePhotoMarkers(){
   var url = document.URL.split("/")
   var nickname = url[url.length - 1]
@@ -78,6 +100,7 @@ function placePhotoMarkers(){
               },
         url: "/photos/" + photo.id
       });
+      photoMarkers.push(marker)
       google.maps.event.addListener(marker, 'click', function() {
         window.location.href = this.url;
       });
@@ -91,4 +114,113 @@ function setPinColor(blog){
   } else {
     return "#FE7569";
   }
+}
+
+function BlogControl(controlDiv, map) {
+
+  // Set CSS for the control border.
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#fff';
+  controlUI.style.border = '2px solid grey';
+  controlUI.style.borderRadius = '3px';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.marginBottom = '22px';
+  controlUI.style.textAlign = 'center';
+  controlDiv.appendChild(controlUI);
+
+  // Set CSS for the control interior.
+  var controlText = document.createElement('div');
+  controlText.style.color = 'rgb(25,25,25)';
+  controlText.style.fontSize = '16px';
+  controlText.style.lineHeight = '38px';
+  controlText.style.paddingLeft = '5px';
+  controlText.style.paddingRight = '5px';
+  controlText.innerHTML = 'Blogs Only';
+  controlUI.appendChild(controlText);
+
+  // Setup the click event listeners
+  controlUI.addEventListener('click', function() {
+    setMapOnAllBlog(map);
+    clearPhotoMarkers();
+  });
+
+}
+
+function PhotoControl(controlDiv, map) {
+
+  // Set CSS for the control border.
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#fff';
+  controlUI.style.border = '2px solid grey';
+  controlUI.style.borderRadius = '3px';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.marginBottom = '22px';
+  controlUI.style.textAlign = 'center';
+  controlDiv.appendChild(controlUI);
+
+  // Set CSS for the control interior.
+  var controlText = document.createElement('div');
+  controlText.style.color = 'rgb(25,25,25)';
+  controlText.style.fontSize = '16px';
+  controlText.style.lineHeight = '38px';
+  controlText.style.paddingLeft = '5px';
+  controlText.style.paddingRight = '5px';
+  controlText.innerHTML = 'Photos Only';
+  controlUI.appendChild(controlText);
+
+  // Setup the click event listeners
+  controlUI.addEventListener('click', function() {
+    setMapOnAllPhoto(map);
+    clearBlogMarkers();
+  });
+}
+
+function PhotoBlogControl(controlDiv, map) {
+
+  // Set CSS for the control border.
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#fff';
+  controlUI.style.border = '2px solid grey';
+  controlUI.style.borderRadius = '3px';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.marginBottom = '22px';
+  controlUI.style.textAlign = 'center';
+  controlDiv.appendChild(controlUI);
+
+  // Set CSS for the control interior.
+  var controlText = document.createElement('div');
+  controlText.style.color = 'rgb(25,25,25)';
+  controlText.style.fontSize = '16px';
+  controlText.style.lineHeight = '38px';
+  controlText.style.paddingLeft = '5px';
+  controlText.style.paddingRight = '5px';
+  controlText.innerHTML = 'Photos & Blogs';
+  controlUI.appendChild(controlText);
+
+  // Setup the click event listeners
+  controlUI.addEventListener('click', function() {
+    setMapOnAllBlog(map);
+    setMapOnAllPhoto(map);
+  });
+
+}
+
+function setMapOnAllBlog(map) {
+  for (var i = 0; i < blogMarkers.length; i++) {
+    blogMarkers[i].setMap(map);
+  }
+}
+
+function setMapOnAllPhoto(map) {
+  for (var i = 0; i < photoMarkers.length; i++) {
+    photoMarkers[i].setMap(map);
+  }
+}
+
+function clearBlogMarkers() {
+  setMapOnAllBlog(null);
+}
+
+function clearPhotoMarkers() {
+  setMapOnAllPhoto(null);
 }

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TravelMapBlog</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <title>WanderBlog</title>
+  <link rel="stylesheet" type="text/css"  href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -40,7 +41,7 @@
             <li><%= link_to "New Photo", new_photo_path%></li>
           </ul>
         </div>
-        <li> <%= link_to "Your Map", user_path(current_user.nickname) %></li>
+        <li> <%= link_to "Your WanderMap", user_path(current_user.nickname) %></li>
       </ul>
     <% end %>
   </div>

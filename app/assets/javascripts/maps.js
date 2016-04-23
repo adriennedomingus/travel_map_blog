@@ -27,6 +27,15 @@ function setLegend(){
       legend.appendChild(p);
     })
   })
+  var blogLink = document.createElement('p');
+  blogLink.innerHTML =  "<a href='/users/" + nickname + "/blogs'>All Blogs</a>";
+  legend.appendChild(blogLink);
+  var photoLink = document.createElement('p');
+  photoLink.innerHTML =  "<a href='/users/" + nickname + "/photos'>All Photos</a>";
+  legend.appendChild(photoLink);
+  var tripLink = document.createElement('p');
+  tripLink.innerHTML =  "<a href='/users/" + nickname + "/trips'>All Trips</a>";
+  legend.appendChild(tripLink);
 }
 
 function placeBlogMarkers(){
@@ -41,6 +50,7 @@ function placeBlogMarkers(){
         icon: {
                   path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
                   scale: 4,
+                  strokeWeight:3,
                   strokeColor: pinColor,
                },
         url: "/blogs/" + blog.slug

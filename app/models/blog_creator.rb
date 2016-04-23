@@ -12,6 +12,10 @@ class BlogCreator
     blog.set_weather
   end
 
+  def update_color
+    blog.set_color
+  end
+
   def setup
     update
     Tweet.new(@blog, current_user, "http://wander-map.herokuapp.com/blogs/#{@blog.slug}")

@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :find_trip_by_slug, only: [:show, :edit]
   before_action :find_trip_by_id, only: [:update, :destroy]
-  
+
   def new
     @trip = Trip.new
   end
@@ -29,6 +29,10 @@ class TripsController < ApplicationController
 
   def update
     if @trip.update(trip_params)
+      @trip.blogs.each do |blog|
+        BlogCreator.new(blog, current_user).update_color
+      end
+      @trip.update_photos
       flash[:success] = "Your trip has been updated!"
       redirect_to trip_path(@trip.slug)
     else

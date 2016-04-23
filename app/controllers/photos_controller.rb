@@ -9,6 +9,7 @@ class PhotosController < ApplicationController
     @photo = current_user.photos.new(photo_params)
     if @photo.save
       @photo.set_location(photo_params)
+      @photo.set_trip_and_color
       flash[:success] = "Your photo has been uploaded!"
       redirect_to photo_path(@photo)
     else
@@ -25,6 +26,7 @@ class PhotosController < ApplicationController
 
   def update
     if @photo.update(photo_params)
+      @photo.set_trip_and_color
       flash[:success] = "Your photo has been updated!"
       redirect_to user_photos_path(current_user.nickname)
     else

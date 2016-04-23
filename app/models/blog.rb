@@ -26,7 +26,7 @@ class Blog < ActiveRecord::Base
 
   def set_color
     if trip
-      self.color = trip.color
+      self.update_attribute(:color, trip.color)
     end
   end
 

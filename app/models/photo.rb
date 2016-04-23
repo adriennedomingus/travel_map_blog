@@ -7,8 +7,6 @@ class Photo < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :image
 
-  before_save :set_trip_and_color
-
   attr_accessor :image
   has_attached_file :image,
     path: ":rails_root/public/system/:attachment/:id/:style/:filename",
@@ -35,10 +33,10 @@ class Photo < ActiveRecord::Base
 
   def set_trip_and_color
     if self.blog && self.blog.trip_id
-      self.trip = blog.trip
-      self.color = blog.trip.color
+      self.update_attribute(:trip, blog.trip)
+      self.update_attribute(:color, blog.trip.color)
     elsif self.trip
-      self.color = trip.color
+      self.update_attribute(:color, trip.color)
     end
   end
 end

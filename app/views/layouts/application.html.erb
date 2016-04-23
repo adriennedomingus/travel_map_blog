@@ -43,6 +43,10 @@
         </div>
         <li> <%= link_to "Your WanderMap", user_path(current_user.nickname) %></li>
       </ul>
+    <% else %>
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to "WanderMap", root_path %></li>
+      </ul>
     <% end %>
   </div>
 </nav>

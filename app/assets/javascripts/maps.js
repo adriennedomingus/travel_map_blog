@@ -23,7 +23,7 @@ function setLegend(){
   $.getJSON('/trip-colors/' + nickname, function(data){
     $.each(data, function(key, trip){
       var p = document.createElement('p');
-      p.innerHTML =  "<div class='square' id=" + trip.slug + "><style> #" + trip.slug + " { border: 5px solid" + trip.color + "; }</style></div><span class='trip-name'>" + trip.name + "</span>";
+      p.innerHTML =  "<div class='square' id=" + trip.slug + "><style> #" + trip.slug + " { border: 5px solid" + trip.color + "; }</style></div><span class='trip-name'><a href='/users/" + nickname + "/trips/" + trip.slug +"'>" + trip.name + "</a></span>";
       legend.appendChild(p);
     })
   })

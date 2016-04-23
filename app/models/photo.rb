@@ -7,6 +7,9 @@ class Photo < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :image
 
+  geocoded_by :location
+  after_validation :geocode
+
   attr_accessor :image
   has_attached_file :image,
     path: ":rails_root/public/system/:attachment/:id/:style/:filename",

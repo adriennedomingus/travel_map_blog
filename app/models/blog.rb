@@ -3,10 +3,6 @@ class Blog < ActiveRecord::Base
   belongs_to :trip
   has_many :photos
 
-  before_save :set_slug
-  before_save :set_color
-  before_save :set_weather
-
   validates :title, presence: :true
   validates :title, uniqueness: :true
   validates :date, presence: :true
@@ -17,15 +13,15 @@ class Blog < ActiveRecord::Base
   after_validation :geocode
 
   def formatted_date
-    date.strftime("%B %d, %Y")
+    format_time(date)
   end
 
   def posted_on
-    created_at.strftime("%B %d, %Y")
+    format_time(created_at)
   end
 
   def set_slug
-    self.slug = title.parameterize
+    self.update_attribute(:slug, title.parameterize)
   end
 
   def set_color
@@ -46,4 +42,10 @@ class Blog < ActiveRecord::Base
     end
     UnsplashService.new.random_by_search(term)
   end
+
+  private
+
+    def format_time(time)
+      time.strftime("%B %d, %Y")
+    end
 end

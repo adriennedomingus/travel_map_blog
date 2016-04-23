@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :find_photo, only: [:show, :edit, :update]
 
   def new
     @photo = Photo.new
@@ -16,22 +17,13 @@ class PhotosController < ApplicationController
     end
   end
 
-  def show
-    @photo = Photo.find(params[:id])
-  end
-
   def index
     user = User.find_by(nickname: params[:nickname])
     @photos = user.photos
     render json: @photos
   end
 
-  def edit
-    @photo = Photo.find(params[:id])
-  end
-
   def update
-    @photo = Photo.find(params[:id])
     if @photo.update(photo_params)
       flash[:success] = "Your photo has been updated!"
       redirect_to user_photos_path(current_user.nickname)
@@ -51,5 +43,9 @@ class PhotosController < ApplicationController
 
     def photo_params
       params.require(:photo).permit(:image, :title, :description, :blog_id, :trip_id)
+    end
+
+    def find_photo
+      @photo = Photo.find(params[:id])
     end
 end

@@ -8,7 +8,7 @@ class User::BlogsController < User::BaseController
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
-      BlogCreator.new(@blog, current_user, blog_url(@blog.slug)).setup
+      BlogCreator.new(@blog, current_user).setup
       flash[:success] = "Your blog has been posted!"
       redirect_to blog_path(@blog.slug)
     else
@@ -23,14 +23,14 @@ class User::BlogsController < User::BaseController
   end
 
   def edit
-    render file: "/public/404" unless current_user? && current_user.nickname == params[:nickname]
+    render file: "/public/404" unless current_user && current_user.nickname == params[:nickname]
     @blog = Blog.find_by(slug: params[:slug])
   end
 
   def update
     @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
-      BlogCreator.new(@blog, current_user, blog_url(@blog.slug)).update
+      BlogCreator.new(@blog, current_user).update
       flash[:success] = "Your blog has been updated!"
       redirect_to blog_path(@blog.slug)
     else

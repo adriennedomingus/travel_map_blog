@@ -1,10 +1,9 @@
 class BlogCreator
-  attr_reader :blog, :current_user, :path
+  attr_reader :blog, :current_user
 
-  def initialize(blog, current_user, path)
+  def initialize(blog, current_user)
     @blog = blog
     @current_user = current_user
-    @path = path
   end
 
   def update
@@ -15,9 +14,7 @@ class BlogCreator
 
   def setup
     update
-    Tweet.new(@blog, current_user, path)
+    Tweet.new(@blog, current_user, "http://wander-map.herokuapp.com/blogs/#{@blog.slug}")
     current_user.blogs << @blog
   end
-
-
 end

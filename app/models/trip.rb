@@ -4,7 +4,7 @@ class Trip < ActiveRecord::Base
   belongs_to :user
 
   before_save :set_slug
-  
+
   validates :name, presence: :true, uniqueness: :true
   validates_presence_of :start_date
   validates_presence_of :end_date
@@ -15,10 +15,15 @@ class Trip < ActiveRecord::Base
   end
 
   def formatted_start_date
-    start_date.strftime("%B %d, %Y")
+    format_time(start_date)
   end
 
   def formatted_end_date
-    end_date.strftime("%B %d, %Y")
+    format_time(end_date)
   end
+
+  private
+    def format_time(time)
+      time.strftime("%B %d, %Y")
+    end
 end

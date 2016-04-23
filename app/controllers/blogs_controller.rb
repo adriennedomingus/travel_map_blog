@@ -1,7 +1,5 @@
 class BlogsController < ApplicationController
-  def show
-    @blog = Blog.find_by(slug: params[:slug])
-  end
+  before_action :find_blog, only: [:show, :weather]
 
   def index
     user = User.find_by(nickname: params[:nickname])
@@ -10,12 +8,16 @@ class BlogsController < ApplicationController
   end
 
   def weather
-      blog = Blog.find_by(slug: params[:slug])
-    if blog
-      @image = blog.get_image
+    if @blog
+      @image = @blog.get_image
       render json: {image: @image }
     else
       render json: {image: nil}
     end
+  end
+
+  private
+  def find_blog
+    @blog = Blog.find_by(slug: params[:slug])
   end
 end

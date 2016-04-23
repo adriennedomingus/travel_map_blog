@@ -1,5 +1,6 @@
 class User::BlogsController < User::BaseController
   before_action :require_user, except: [:index]
+  before_action :find_blog, only: [:update, :destroy]
 
   def new
     @blog = Blog.new
@@ -28,7 +29,6 @@ class User::BlogsController < User::BaseController
   end
 
   def update
-    @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
       BlogCreator.new(@blog, current_user).update
       flash[:success] = "Your blog has been updated!"
@@ -40,14 +40,20 @@ class User::BlogsController < User::BaseController
   end
 
   def destroy
-    Blog.find(params[:id]).destroy
+    @blog.photos.each do |photo|
+      photo.update_attribute(:blog_id, nil)
+    end
+    @blog.destroy
     flash[:success] = "Your blog has been deleted!"
     redirect_to users_blogs_path(current_user.nickname)
   end
 
   private
-
     def blog_params
       params.require(:blog).permit(:title, :date, :content, :trip_id, :location)
+    end
+
+    def find_blog
+      @blog = Blog.find(params[:id])
     end
 end

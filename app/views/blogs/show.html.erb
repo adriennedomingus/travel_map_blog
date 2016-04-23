@@ -10,7 +10,7 @@
       <p class="centered"><%= link_to "Edit", edit_user_blog_path(current_user.nickname, @blog.slug) %></p>
       <p class="centered delete"><%= link_to "Delete", user_blog_path(@blog), method: :delete %></p>
     <% end %>
-    <p><%= @blog.content %></p>
+    <p><%= @blog.content.gsub(/\n/, '<br/>').html_safe %></p>
     <hr>
     <h3 class="centered">Photos</h3>
     <br>

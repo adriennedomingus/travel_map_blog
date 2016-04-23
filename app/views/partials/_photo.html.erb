@@ -1,4 +1,5 @@
 <h4><%= link_to photo.title, photo_path(photo)%></h4>
+<p class= "centered"> <%= link_to "Delete", photo_path(photo), method: :delete %></p>
 <% if photo.trip %>
   <p class="centered"><%= link_to photo.trip.name, trip_path(photo.trip.slug) %></p>
 <% end %>

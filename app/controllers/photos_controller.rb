@@ -26,6 +26,27 @@ class PhotosController < ApplicationController
     render json: @photos
   end
 
+  def edit
+    @photo = Photo.find(params[:id])
+  end
+
+  def update
+    @photo = Photo.find(params[:id])
+    if @photo.update(photo_params)
+      flash[:success] = "Your photo has been updated!"
+      redirect_to user_photos_path(current_user.nickname)
+    else
+      flash[:danger] = "Please enter all information"
+      render :edit
+    end
+  end
+
+  def destroy
+    Photo.find(params[:id]).destroy
+    flash[:success] = "Your photo has been deleted!"
+    redirect_to user_photos_path(current_user.nickname)
+  end
+
   private
 
     def photo_params

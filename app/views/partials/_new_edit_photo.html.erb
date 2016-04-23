@@ -1,0 +1,21 @@
+<div class="container">
+  <%= form_for(@photo, multipart: true) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control' %>
+  <%= f.label :image %>
+  <%= f.file_field :image, class: 'form-control' %>
+  <br>
+  <div id="trip-selector">
+    <%= f.label :trip %>
+    <%= select("photo", :trip_id, current_user.trips.collect { |t| [t.name, t.id]}, {prompt: "None"}, class: 'form-control' )%>
+  </div>
+  <div id="blog-selector">
+    <%= f.label :blog %>
+    <%= select("photo", :blog_id, current_user.blogs.collect { |b| [b.title, b.id]}, {prompt: "None"}, class: 'form-control' )%>
+  </div>
+  <br>
+  <%= f.submit class: 'form-control' %>
+  <% end %>
+</div>

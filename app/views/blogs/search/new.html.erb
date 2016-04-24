@@ -1,0 +1,12 @@
+
+  <div class="row">
+    <div class="search-form col-md-3">
+      <%= form_for :search, id: "blog-search-form" do |f| %>
+      <%= f.text_field :location, placeholder: "City", class: "form-control" %>
+      <%= f.text_field :radius, placeholder: "Search Radius (Miles)", class: "form-control" %>
+      <%= link_to "Search", '#', id: "blog-search", class: "btn btn-default" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="container-fluid" id="map">
+  </div>

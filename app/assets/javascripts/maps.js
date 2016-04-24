@@ -1,15 +1,21 @@
 $( document ).ready(function() {
-  initMap();
-  placeBlogMarkers();
-  placePhotoMarkers();
-  setLegend();
-  setViewButtons();
+  var url = document.URL.split("/")
+  if (url[url.length - 1] === "search" && url[url.length - 2] === "blogs") {
+    initMap();
+    placeBlogSearchMarkers();
+  } else if ( $('#map').length > 0 ) {
+    initMap();
+    placeBlogMarkers();
+    placePhotoMarkers();
+    setLegend();
+    setViewButtons();
+  }
 });
 
 var map;
 function initMap() {
   var myLatLng = {lat: -25.363, lng: 131.044};
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById("map"), {
     center: {lat: 50.0, lng: 0},
     zoom: 2
   });
@@ -63,6 +69,39 @@ function placeBlogMarkers(){
       });
     });
   })
+}
+
+function placeBlogSearchMarkers(){
+  $("#blog-search").click(function(){
+    var location = $("#search_location").val();
+    var radius = $("#search_radius").val();
+    $.ajax({
+      type: "POST",
+      url: "/blogs/search?location=" + location + "&radius=" + radius,
+      success: function(data) {
+        $(".search-form").addClass('hidden')
+        $.each(data, function(key, blog) {
+          var pinColor = setPinColor(blog);
+          var marker = new google.maps.Marker({
+            position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
+            map: map,
+            icon: {
+                      path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                      scale: 4,
+                      strokeWeight:3,
+                      strokeColor: pinColor,
+                   },
+            url: "/blogs/" + blog.slug
+          });
+          map.setZoom(8);
+          map.setCenter({lat: parseInt(this.latitude), lng: parseInt(this.longitude)});
+          google.maps.event.addListener(marker, 'click', function() {
+            window.location.href = this.url;
+          });
+        })
+      }
+    });
+  });
 }
 
 var photoMarkers = []

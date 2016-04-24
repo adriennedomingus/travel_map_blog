@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-23T15:10:59-06:00">2016-04-23T15:10:59-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-24T12:22:11-06:00">2016-04-24T12:22:11-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.86
+         2.91
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>58</b> files in total.
-    <b>849</b> relevant lines. 
-    <span class="green"><b>836</b> lines covered</span> and
+    <b>851</b> relevant lines. 
+    <span class="green"><b>838</b> lines covered</span> and
     <span class="red"><b>13</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -57,7 +57,7 @@
         <td>5</td>
         <td>5</td>
         <td>0</td>
-        <td>12.8</td>
+        <td>21.2</td>
       </tr>
       
       <tr>
@@ -383,9 +383,9 @@
       <tr>
         <td class="strong"><a href="#cd59d6f11d9910198a041d326ae8af7c833aa2c8" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>28</td>
-        <td>20</td>
-        <td>20</td>
+        <td>31</td>
+        <td>22</td>
+        <td>22</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -690,8 +690,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="60" data-linenumber="6">
-          <span class="hits">60</span>
+        <li class="covered" data-hits="102" data-linenumber="6">
+          <span class="hits">102</span>
           
           <code class="ruby">    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]</code>
         </li>
@@ -5019,8 +5019,8 @@
     <h3>config/routes.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>20</b> relevant lines. 
-      <span class="green"><b>20</b> lines covered</span> and
+      <b>22</b> relevant lines. 
+      <span class="green"><b>22</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -5043,13 +5043,13 @@
         <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;auth/:provider/callback&#39;,     to: &#39;sessions#create&#39;,   as: :login</code>
+          <code class="ruby">  get &#39;auth/:provider/callback&#39;,     to: &#39;sessions#create&#39;,     as: :login</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="4">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;/logout&#39;,                     to: &#39;sessions#destroy&#39;,  as: :logout</code>
+          <code class="ruby">  get &#39;/logout&#39;,                     to: &#39;sessions#destroy&#39;,    as: :logout</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="5">
@@ -5061,19 +5061,19 @@
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;users/:nickname&#39;,             to: &#39;users#show&#39;,        as: &#39;user&#39;</code>
+          <code class="ruby">  get &#39;users/:nickname&#39;,             to: &#39;users#show&#39;,          as: &#39;user&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="7">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;users/:nickname/blogs&#39;,       to: &#39;user/blogs#index&#39;,  as: &#39;users_blogs&#39;</code>
+          <code class="ruby">  get &#39;users/:nickname/blogs&#39;,       to: &#39;user/blogs#index&#39;,    as: &#39;users_blogs&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="8">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;users/:nickname/blogs/:slug&#39;, to: &#39;user/blogs#edit&#39;,   as: &#39;edit_user_blog&#39;</code>
+          <code class="ruby">  get &#39;users/:nickname/blogs/:slug&#39;, to: &#39;user/blogs#edit&#39;,     as: &#39;edit_user_blog&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="9">
@@ -5085,7 +5085,7 @@
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;users/:nickname/photos&#39;,      to: &#39;user/photos#index&#39;, as: &#39;user_photos&#39;</code>
+          <code class="ruby">  get &#39;users/:nickname/photos&#39;,      to: &#39;user/photos#index&#39;,   as: &#39;user_photos&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="11">
@@ -5097,13 +5097,13 @@
         <li class="covered" data-hits="1" data-linenumber="12">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;users/:nickname/trips&#39;,       to: &#39;trips#index&#39;,       as: &#39;users_trips&#39;</code>
+          <code class="ruby">  get &#39;users/:nickname/trips&#39;,       to: &#39;trips#index&#39;,         as: &#39;users_trips&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
-          <code class="ruby">  get &#39;users/:nickname/trips/:slug&#39;, to: &#39;trips#show&#39;,        as: &#39;users_trip&#39;</code>
+          <code class="ruby">  get &#39;users/:nickname/trips/:slug&#39;, to: &#39;trips#show&#39;,          as: &#39;users_trip&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
@@ -5145,52 +5145,70 @@
         <li class="covered" data-hits="1" data-linenumber="20">
           <span class="hits">1</span>
           
-          <code class="ruby">  resources :blogs,                  only: [:show],           param: :slug</code>
+          <code class="ruby">  get &#39;/blogs/search&#39;,               to: &#39;blogs/search#new&#39;,    as: &#39;new_blog_search&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="21">
           <span class="hits">1</span>
           
-          <code class="ruby">  resources :trips,                  only: [:new, :create, :update, :destroy]</code>
+          <code class="ruby">  post &#39;/blogs/search&#39;,              to: &#39;blogs/search#index&#39;,  as: &#39;blog_search_index&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="22">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  resources :trips,                  only: [:show, :edit],    param: :slug</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="23">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  resources :photos,                 except: [:index]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="22">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  resources :blogs,                  only: [:show],             param: :slug</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  resources :trips,                  only: [:new, :create, :update, :destroy]</code>
+        </li>
+      
         <li class="covered" data-hits="1" data-linenumber="25">
           <span class="hits">1</span>
           
-          <code class="ruby">  namespace :user do</code>
+          <code class="ruby">  resources :trips,                  only: [:show, :edit],      param: :slug</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="26">
           <span class="hits">1</span>
           
-          <code class="ruby">    resources :blogs,                only: [:new, :create, :update, :destroy]</code>
+          <code class="ruby">  resources :photos,                 except: [:index]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  namespace :user do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="29">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    resources :blogs,                only: [:new, :create, :update, :destroy]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="30">
+          
+          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="28">
+        <li class="never" data-hits="" data-linenumber="31">
           
           
           <code class="ruby">end</code>

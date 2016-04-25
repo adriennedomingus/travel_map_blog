@@ -10,8 +10,8 @@ RSpec.describe Blogs::SearchController, type: :controller do
         get :index, location: b1.location, radius: 50
         blogs = JSON.parse(response.body)
 
-        expect(blogs.count).to eq(1)
-        expect(blogs.first["title"]).to eq(b1.title)
+        expect(blogs["search"].count).to eq(1)
+        expect(blogs["search"].first["title"]).to eq(b1.title)
       end
     end
   end

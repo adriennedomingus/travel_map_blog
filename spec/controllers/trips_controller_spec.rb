@@ -11,8 +11,9 @@ RSpec.describe TripsController, type: :controller do
         get :color, nickname: user.nickname
 
         trips = JSON.parse(response.body)
-        expect(trips.count).to eq(2)
-        expect(trips.first["name"]).to eq(t1.name)
+
+        expect(trips["trips"].count).to eq(2)
+        expect(trips["trips"].first["name"]).to eq(t1.name)
       end
     end
   end

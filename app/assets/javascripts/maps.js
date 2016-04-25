@@ -29,7 +29,7 @@ function setLegend(){
   var url = document.URL.split("/")
   var nickname = url[url.length - 1]
   $.getJSON('/trip-colors/' + nickname, function(data){
-    $.each(data, function(key, trip){
+    $.each(data["trips"], function(key, trip){
       var p = document.createElement('p');
       p.innerHTML =  "<div class='square' id=" + trip.slug + "><style> #" + trip.slug + " { border: 5px solid" + trip.color + "; }</style></div><span class='trip-name'><a href='/users/" + nickname + "/trips/" + trip.slug +"'>" + trip.name + "</a></span>";
       legend.appendChild(p);
@@ -50,7 +50,7 @@ var blogMarkers = []
 function placeBlogMarkers(){
   var nickname = getNickname();
   $.getJSON('/blog-markers/' + nickname, function(data) {
-    $.each(data, function(key, blog) {
+    $.each(data["blogs"], function(key, blog) {
       var pinColor = setPinColor(blog);
       var marker = new google.maps.Marker({
         position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
@@ -79,11 +79,11 @@ function placeBlogSearchMarkers(){
       type: "POST",
       url: "/blogs/search?location=" + location + "&radius=" + radius,
       success: function(data) {
-        if (data.length === 0) {
+        if (data["search"].length === 0) {
           alert("No blogs match your search. Please try a different location or a larger search radius.");
         } else {
           $(".search-form").addClass('hidden')
-          $.each(data, function(key, blog) {
+          $.each(data["search"], function(key, blog) {
             var pinColor = setPinColor(blog);
             var marker = new google.maps.Marker({
               position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
@@ -112,7 +112,7 @@ var photoMarkers = []
 function placePhotoMarkers(){
   var nickname = getNickname();
   $.getJSON('/photo-markers/' + nickname, function(data) {
-    $.each(data, function(key, photo) {
+    $.each(data["photos"], function(key, photo) {
       var pinColor = setPinColor(photo);
       var marker = new google.maps.Marker({
         position: {lat: parseFloat(photo.latitude), lng: parseFloat(photo.longitude)},
@@ -133,8 +133,8 @@ function placePhotoMarkers(){
 }
 
 function setPinColor(blog){
-  if(blog.color) {
-    return blog.color;
+  if(blog.trip) {
+    return blog.trip.color;
   } else {
     return "#FE7569";
   }

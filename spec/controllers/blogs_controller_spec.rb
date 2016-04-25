@@ -8,9 +8,9 @@ RSpec.describe BlogsController, type: :controller do
         _, b1 = create_trip_and_blog(user)
         get :index, nickname: user.nickname
         blogs = JSON.parse(response.body)
-
+  
         expect(blogs.count).to eq(1)
-        expect(blogs.first["title"]).to eq(b1.title)
+        expect(blogs["blogs"].first["id"]).to eq(b1.id)
       end
     end
   end

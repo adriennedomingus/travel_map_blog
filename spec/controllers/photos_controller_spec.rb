@@ -12,9 +12,9 @@ RSpec.describe PhotosController, type: :controller do
 
         photos = JSON.parse(response.body)
 
-        expect(photos.count).to eq(1)
-        expect(photos.first["title"]).to eq(photo.title)
-        expect(photos.first["user_id"]).to eq(user.id)
+        expect(photos["photos"].count).to eq(1)
+        expect(photos["photos"].first["title"]).to eq(photo.title)
+        expect(photos["photos"].first["user_id"]).to eq(user.id)
       end
     end
   end

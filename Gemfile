@@ -18,6 +18,7 @@ gem 'exifr'
 gem 'geocoder'
 gem 'jquery-minicolors-rails'
 gem 'newrelic_rpm'
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'pry-rails'

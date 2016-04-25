@@ -79,26 +79,30 @@ function placeBlogSearchMarkers(){
       type: "POST",
       url: "/blogs/search?location=" + location + "&radius=" + radius,
       success: function(data) {
-        $(".search-form").addClass('hidden')
-        $.each(data, function(key, blog) {
-          var pinColor = setPinColor(blog);
-          var marker = new google.maps.Marker({
-            position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
-            map: map,
-            icon: {
-                      path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-                      scale: 4,
-                      strokeWeight:3,
-                      strokeColor: pinColor,
-                   },
-            url: "/blogs/" + blog.slug
-          });
-          map.setZoom(8);
-          map.setCenter({lat: parseInt(this.latitude), lng: parseInt(this.longitude)});
-          google.maps.event.addListener(marker, 'click', function() {
-            window.location.href = this.url;
-          });
-        })
+        if (data.length === 0) {
+          alert("No blogs match your search. Please try a different location or a larger search radius.");
+        } else {
+          $(".search-form").addClass('hidden')
+          $.each(data, function(key, blog) {
+            var pinColor = setPinColor(blog);
+            var marker = new google.maps.Marker({
+              position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
+              map: map,
+              icon: {
+                        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                        scale: 4,
+                        strokeWeight:3,
+                        strokeColor: pinColor,
+                     },
+              url: "/blogs/" + blog.slug
+            });
+            map.setZoom(8);
+            map.setCenter({lat: parseInt(this.latitude), lng: parseInt(this.longitude)});
+            google.maps.event.addListener(marker, 'click', function() {
+              window.location.href = this.url;
+            });
+          })
+        }
       }
     });
   });

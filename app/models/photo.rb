@@ -34,12 +34,9 @@ class Photo < ActiveRecord::Base
     end
   end
 
-  def set_trip_and_color
+  def set_trip
     if self.blog && self.blog.trip_id
       self.update_attribute(:trip, blog.trip)
-      self.update_attribute(:color, blog.trip.color)
-    elsif self.trip
-      self.update_attribute(:color, trip.color)
     end
   end
 end

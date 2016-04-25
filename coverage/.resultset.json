@@ -368,10 +368,8 @@
         1,
         null,
         1,
-        null,
         1,
         null,
-        1,
         1,
         1,
         null,
@@ -403,6 +401,7 @@
         1,
         1,
         1,
+        null,
         1,
         null,
         null,
@@ -488,7 +487,6 @@
         null,
         1,
         2,
-        1,
         1,
         1,
         null,
@@ -1141,11 +1139,9 @@
         1,
         1,
         1,
-        1,
         null,
         null,
         null,
-        1,
         1,
         1,
         1,
@@ -1196,9 +1192,6 @@
         1,
         4,
         2,
-        2,
-        2,
-        1,
         null,
         null,
         null
@@ -1237,12 +1230,6 @@
         null,
         1,
         6,
-        null,
-        null,
-        1,
-        1,
-        0,
-        null,
         null,
         null,
         1,
@@ -1429,6 +1416,13 @@
         1,
         null
       ],
+      "/Users/adrienne/Turing/3module/travel_map_blog/app/serializers/photo_serializer.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
       "/Users/adrienne/Turing/3module/travel_map_blog/app/controllers/welcome_controller.rb": [
         1,
         null
@@ -1528,6 +1522,6 @@
         null
       ]
     },
-    "timestamp": 1461620474
+    "timestamp": 1461621706
   }
 }

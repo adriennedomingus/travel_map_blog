@@ -135,6 +135,8 @@ function placePhotoMarkers(){
 function setPinColor(blog){
   if(blog.trip) {
     return blog.trip.color;
+  } else if (blog.blog) {
+    return blog.blog.color
   } else {
     return "#FE7569";
   }

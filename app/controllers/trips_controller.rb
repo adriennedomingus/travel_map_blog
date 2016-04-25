@@ -29,7 +29,6 @@ class TripsController < ApplicationController
 
   def update
     if @trip.update(trip_params)
-      @trip.update_photos
       flash[:success] = "Your trip has been updated!"
       redirect_to trip_path(@trip.slug)
     else

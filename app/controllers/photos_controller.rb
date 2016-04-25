@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
     @photo = current_user.photos.new(photo_params)
     if @photo.save
       @photo.set_location(photo_params)
-      @photo.set_trip_and_color
+      @photo.set_trip
       flash[:success] = "Your photo has been uploaded!"
       redirect_to photo_path(@photo)
     else
@@ -21,12 +21,13 @@ class PhotosController < ApplicationController
   def index
     user = User.find_by(nickname: params[:nickname])
     @photos = user.photos
+
     render json: @photos
   end
 
   def update
     if @photo.update(photo_params)
-      @photo.set_trip_and_color
+      @photo.set_trip
       flash[:success] = "Your photo has been updated!"
       redirect_to user_photos_path(current_user.nickname)
     else

@@ -26,9 +26,8 @@ RSpec.describe Photo, type: :model do
       user = create_user
       t1, b1 = create_trip_and_blog(user)
       photo = Photo.create(title: "title", description: "description", image:"http://s3.amazonaws.com/travel-map-blog/images/40/original/IMG_2013.JPG?1461168957", user_id: user.id, blog_id: b1.id )
-      photo.set_trip_and_color
+      photo.set_trip
       expect(photo.trip).to eq(t1)
-      expect(photo.color).to eq(t1.color)
     end
   end
 
@@ -37,8 +36,7 @@ RSpec.describe Photo, type: :model do
       user = create_user
       t1, _ = create_trip_and_blog(user)
       photo = Photo.create(title: "title", description: "description", image:"http://s3.amazonaws.com/travel-map-blog/images/40/original/IMG_2013.JPG?1461168957", user_id: user.id, trip_id: t1.id )
-      photo.set_trip_and_color
-      expect(photo.color).to eq(t1.color)
+      photo.set_trip
     end
   end
 end

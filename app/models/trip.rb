@@ -22,12 +22,6 @@ class Trip < ActiveRecord::Base
     format_time(end_date)
   end
 
-  def update_photos
-    photos.each do |photo|
-      photo.update_attribute(:color, self.color)
-    end
-  end
-
   private
     def format_time(time)
       time.strftime("%B %d, %Y")

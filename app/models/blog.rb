@@ -24,12 +24,6 @@ class Blog < ActiveRecord::Base
     self.update_attribute(:slug, title.parameterize)
   end
 
-  def set_color
-    if trip
-      self.update_attribute(:color, trip.color)
-    end
-  end
-
   def set_weather
     self.weather = Weather.description(self)
   end

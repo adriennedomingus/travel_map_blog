@@ -8,12 +8,7 @@ class BlogCreator
 
   def update
     blog.set_slug
-    blog.set_color
     blog.set_weather
-  end
-
-  def update_color
-    blog.set_color
   end
 
   def setup

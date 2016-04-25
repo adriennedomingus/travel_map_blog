@@ -14,26 +14,26 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-25T14:53:34-06:00">2016-04-25T14:53:34-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-25T15:41:14-06:00">2016-04-25T15:41:14-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">98.74%</span></span>
+    (<span class="covered_percent"><span class="green">98.73%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.93
+         2.83
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>63</b> files in total.
-    <b>875</b> relevant lines. 
-    <span class="green"><b>864</b> lines covered</span> and
+    <b>867</b> relevant lines. 
+    <span class="green"><b>856</b> lines covered</span> and
     <span class="red"><b>11</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -113,11 +113,11 @@
       <tr>
         <td class="strong"><a href="#c77ff6be3b4e3444cc7f63ab130719274db6aad7" class="src_link" title="app/controllers/trips_controller.rb">app/controllers/trips_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>72</td>
-        <td>45</td>
-        <td>45</td>
+        <td>69</td>
+        <td>43</td>
+        <td>43</td>
         <td>0</td>
-        <td>1.5</td>
+        <td>1.6</td>
       </tr>
       
       <tr>
@@ -172,22 +172,22 @@
       
       <tr>
         <td class="strong"><a href="#3834a2f60d0104d5beeb1465b1f970860f5d7a3a" class="src_link" title="app/models/blog.rb">app/models/blog.rb</a></td>
-        <td class="green strong">96.67 %</td>
-        <td>51</td>
-        <td>30</td>
-        <td>29</td>
+        <td class="green strong">96.3 %</td>
+        <td>45</td>
+        <td>27</td>
+        <td>26</td>
         <td>1</td>
-        <td>8.3</td>
+        <td>6.4</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#1a28c00b8af59f621600143456179906115875da" class="src_link" title="app/models/blog_creator.rb">app/models/blog_creator.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>24</td>
-        <td>15</td>
-        <td>15</td>
+        <td>19</td>
+        <td>12</td>
+        <td>12</td>
         <td>0</td>
-        <td>21.2</td>
+        <td>22.9</td>
       </tr>
       
       <tr>
@@ -1445,8 +1445,8 @@
     <h3>app/controllers/trips_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>45</b> relevant lines. 
-      <span class="green"><b>45</b> lines covered</span> and
+      <b>43</b> relevant lines. 
+      <span class="green"><b>43</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1643,244 +1643,226 @@
         <li class="covered" data-hits="1" data-linenumber="32">
           <span class="hits">1</span>
           
-          <code class="ruby">      @trip.blogs.each do |blog|</code>
+          <code class="ruby">      @trip.update_photos</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="33">
           <span class="hits">1</span>
           
-          <code class="ruby">        BlogCreator.new(blog, current_user).update_color</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="34">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="35">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      @trip.update_photos</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="36">
-          <span class="hits">1</span>
-          
           <code class="ruby">      flash[:success] = &quot;Your trip has been updated!&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="37">
+        <li class="covered" data-hits="1" data-linenumber="34">
           <span class="hits">1</span>
           
           <code class="ruby">      redirect_to trip_path(@trip.slug)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="38">
+        <li class="never" data-hits="" data-linenumber="35">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="39">
+        <li class="covered" data-hits="1" data-linenumber="36">
           <span class="hits">1</span>
           
           <code class="ruby">      flash.now[:danger] = &quot;Please enter all information&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="40">
+        <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
           <code class="ruby">      render :edit</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="44">
+        <li class="covered" data-hits="1" data-linenumber="41">
           <span class="hits">1</span>
           
           <code class="ruby">  def destroy</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="45">
+        <li class="covered" data-hits="1" data-linenumber="42">
           <span class="hits">1</span>
           
           <code class="ruby">    render file: &quot;/public/404&quot; unless current_user &amp;&amp; current_user == @trip.user</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="46">
+        <li class="covered" data-hits="1" data-linenumber="43">
           <span class="hits">1</span>
           
           <code class="ruby">    @trip.blogs.each do |blog|</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="47">
+        <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
           <code class="ruby">      blog.update_attribute(:trip_id, nil)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="48">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="49">
+        <li class="covered" data-hits="1" data-linenumber="46">
           <span class="hits">1</span>
           
           <code class="ruby">    @trip.destroy</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="50">
+        <li class="covered" data-hits="1" data-linenumber="47">
           <span class="hits">1</span>
           
           <code class="ruby">    flash[:success] = &quot;Your trip has been deleted!&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="51">
+        <li class="covered" data-hits="1" data-linenumber="48">
           <span class="hits">1</span>
           
           <code class="ruby">    redirect_to users_trips_path(current_user.nickname)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="never" data-hits="" data-linenumber="49">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="53">
+        <li class="never" data-hits="" data-linenumber="50">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="54">
+        <li class="covered" data-hits="1" data-linenumber="51">
           <span class="hits">1</span>
           
           <code class="ruby">  def color</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="55">
+        <li class="covered" data-hits="1" data-linenumber="52">
           <span class="hits">1</span>
           
           <code class="ruby">    user = User.find_by(nickname: params[:nickname])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="56">
+        <li class="covered" data-hits="1" data-linenumber="53">
           <span class="hits">1</span>
           
           <code class="ruby">    @trips = user.trips</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="57">
+        <li class="covered" data-hits="1" data-linenumber="54">
           <span class="hits">1</span>
           
           <code class="ruby">    render json: @trips</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="58">
+        <li class="never" data-hits="" data-linenumber="55">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="59">
+        <li class="never" data-hits="" data-linenumber="56">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="60">
+        <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
           <code class="ruby">  private</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="61">
+        <li class="covered" data-hits="1" data-linenumber="58">
           <span class="hits">1</span>
           
           <code class="ruby">    def trip_params</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="62">
+        <li class="covered" data-hits="4" data-linenumber="59">
           <span class="hits">4</span>
           
           <code class="ruby">      params.require(:trip).permit(:name, :start_date, :end_date, :color)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="63">
+        <li class="never" data-hits="" data-linenumber="60">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="64">
+        <li class="never" data-hits="" data-linenumber="61">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="65">
+        <li class="covered" data-hits="1" data-linenumber="62">
           <span class="hits">1</span>
           
           <code class="ruby">    def find_trip_by_slug</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="66">
+        <li class="covered" data-hits="10" data-linenumber="63">
           <span class="hits">10</span>
           
           <code class="ruby">      @trip = Trip.find_by(slug: params[:slug])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="67">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="69">
+        <li class="covered" data-hits="1" data-linenumber="66">
           <span class="hits">1</span>
           
           <code class="ruby">    def find_trip_by_id</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="70">
+        <li class="covered" data-hits="3" data-linenumber="67">
           <span class="hits">3</span>
           
           <code class="ruby">      @trip = Trip.find_by(id: params[:id])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="71">
+        <li class="never" data-hits="" data-linenumber="68">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="72">
+        <li class="never" data-hits="" data-linenumber="69">
           
           
           <code class="ruby">end</code>
@@ -2439,10 +2421,10 @@
         <div class="source_table" id="3834a2f60d0104d5beeb1465b1f970860f5d7a3a">
   <div class="header">
     <h3>app/models/blog.rb</h3>
-    <h4><span class="green">96.67 %</span> covered</h4>
+    <h4><span class="green">96.3 %</span> covered</h4>
     <div>
-      <b>30</b> relevant lines. 
-      <span class="green"><b>29</b> lines covered</span> and
+      <b>27</b> relevant lines. 
+      <span class="green"><b>26</b> lines covered</span> and
       <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
@@ -2609,148 +2591,112 @@
         <li class="covered" data-hits="1" data-linenumber="27">
           <span class="hits">1</span>
           
-          <code class="ruby">  def set_color</code>
-        </li>
-      
-        <li class="covered" data-hits="40" data-linenumber="28">
-          <span class="hits">40</span>
-          
-          <code class="ruby">    if trip</code>
-        </li>
-      
-        <li class="covered" data-hits="35" data-linenumber="29">
-          <span class="hits">35</span>
-          
-          <code class="ruby">      self.update_attribute(:color, trip.color)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="30">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="31">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="32">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="33">
-          <span class="hits">1</span>
-          
           <code class="ruby">  def set_weather</code>
         </li>
       
-        <li class="covered" data-hits="39" data-linenumber="34">
+        <li class="covered" data-hits="39" data-linenumber="28">
           <span class="hits">39</span>
           
           <code class="ruby">    self.weather = Weather.description(self)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="35">
+        <li class="never" data-hits="" data-linenumber="29">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="30">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="37">
+        <li class="covered" data-hits="1" data-linenumber="31">
           <span class="hits">1</span>
           
           <code class="ruby">  def get_image</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="38">
+        <li class="covered" data-hits="2" data-linenumber="32">
           <span class="hits">2</span>
           
           <code class="ruby">    if self.weather</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="39">
+        <li class="covered" data-hits="2" data-linenumber="33">
           <span class="hits">2</span>
           
           <code class="ruby">      term = self.weather.split(&quot; &quot;)[-1]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="34">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="41">
+        <li class="missed" data-hits="0" data-linenumber="35">
           
           
           <code class="ruby">      term = &quot;travel&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="36">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="43">
+        <li class="covered" data-hits="2" data-linenumber="37">
           <span class="hits">2</span>
           
           <code class="ruby">    UnsplashService.new.random_by_search(term)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="46">
+        <li class="covered" data-hits="1" data-linenumber="40">
           <span class="hits">1</span>
           
           <code class="ruby">  private</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="48">
+        <li class="covered" data-hits="1" data-linenumber="42">
           <span class="hits">1</span>
           
           <code class="ruby">    def format_time(time)</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="49">
+        <li class="covered" data-hits="35" data-linenumber="43">
           <span class="hits">35</span>
           
           <code class="ruby">      time.strftime(&quot;%B %d, %Y&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="50">
+        <li class="never" data-hits="" data-linenumber="44">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="51">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">end</code>
@@ -2765,8 +2711,8 @@
     <h3>app/models/blog_creator.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>15</b> relevant lines. 
-      <span class="green"><b>15</b> lines covered</span> and
+      <b>12</b> relevant lines. 
+      <span class="green"><b>12</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -2798,14 +2744,14 @@
           <code class="ruby">  def initialize(blog, current_user)</code>
         </li>
       
-        <li class="covered" data-hits="40" data-linenumber="5">
-          <span class="hits">40</span>
+        <li class="covered" data-hits="39" data-linenumber="5">
+          <span class="hits">39</span>
           
           <code class="ruby">    @blog = blog</code>
         </li>
       
-        <li class="covered" data-hits="40" data-linenumber="6">
-          <span class="hits">40</span>
+        <li class="covered" data-hits="39" data-linenumber="6">
+          <span class="hits">39</span>
           
           <code class="ruby">    @current_user = current_user</code>
         </li>
@@ -2837,82 +2783,52 @@
         <li class="covered" data-hits="39" data-linenumber="11">
           <span class="hits">39</span>
           
-          <code class="ruby">    blog.set_color</code>
+          <code class="ruby">    blog.set_weather</code>
         </li>
       
-        <li class="covered" data-hits="39" data-linenumber="12">
-          <span class="hits">39</span>
+        <li class="never" data-hits="" data-linenumber="12">
           
-          <code class="ruby">    blog.set_weather</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="14">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="15">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def update_color</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="16">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    blog.set_color</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="17">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="18">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="19">
+        <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
           <code class="ruby">  def setup</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="20">
+        <li class="covered" data-hits="38" data-linenumber="15">
           <span class="hits">38</span>
           
           <code class="ruby">    update</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="21">
+        <li class="covered" data-hits="38" data-linenumber="16">
           <span class="hits">38</span>
           
           <code class="ruby">    Tweet.new(@blog, current_user, &quot;http://wander-map.herokuapp.com/blogs/#{@blog.slug}&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="22">
+        <li class="covered" data-hits="38" data-linenumber="17">
           <span class="hits">38</span>
           
           <code class="ruby">    current_user.blogs &lt;&lt; @blog</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">end</code>
@@ -3701,7 +3617,7 @@
         <li class="covered" data-hits="1" data-linenumber="2">
           <span class="hits">1</span>
           
-          <code class="ruby">  attributes :id, :latitude, :longitude, :title</code>
+          <code class="ruby">  attributes :id, :latitude, :longitude, :title, :slug</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="3">
@@ -3743,7 +3659,7 @@
         <li class="covered" data-hits="1" data-linenumber="2">
           <span class="hits">1</span>
           
-          <code class="ruby">  attributes :id, :color, :name</code>
+          <code class="ruby">  attributes :id, :color, :name, :slug</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="3">

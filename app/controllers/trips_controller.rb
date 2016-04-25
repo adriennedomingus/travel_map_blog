@@ -29,9 +29,6 @@ class TripsController < ApplicationController
 
   def update
     if @trip.update(trip_params)
-      @trip.blogs.each do |blog|
-        BlogCreator.new(blog, current_user).update_color
-      end
       @trip.update_photos
       flash[:success] = "Your trip has been updated!"
       redirect_to trip_path(@trip.slug)

@@ -4,6 +4,7 @@ $( document ).ready(function() {
     initMap();
     placeBlogSearchMarkers();
   } else if ( $('#map').length > 0 ) {
+    $(".new-search").addClass("hidden");
     initMap();
     placeBlogMarkers();
     placePhotoMarkers();
@@ -35,6 +36,7 @@ function setLegend(){
       legend.appendChild(p);
     })
   })
+
   var blogLink = document.createElement('p');
   blogLink.innerHTML =  "<a href='/users/" + nickname + "/blogs'>All Blogs</a>";
   legend.appendChild(blogLink);
@@ -96,6 +98,7 @@ function placeBlogSearchMarkers(){
                      },
               url: "/blogs/" + blog.slug
             });
+            $(".new-search").removeClass("hidden");
             map.setZoom(8);
             map.setCenter({lat: parseInt(this.latitude), lng: parseInt(this.longitude)});
             google.maps.event.addListener(marker, 'click', function() {

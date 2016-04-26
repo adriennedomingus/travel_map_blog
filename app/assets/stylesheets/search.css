@@ -1,8 +1,16 @@
-
 .search-form {
   position: absolute;
   top: 45%;
   left: 40%;
+  z-index: 5;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  padding-left: 10px;
+}
+
+.new-search {
+  position: absolute;
+  left: 48%;
   z-index: 5;
   text-align: center;
   font-family: 'Roboto','sans-serif';

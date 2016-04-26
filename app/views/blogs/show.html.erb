@@ -2,7 +2,7 @@
   <div class="container blog-content">
     <h1 class="blog-title"><%= @blog.title %></h1>
     <% if @blog.trip %>
-      <h3 class="blog-title"><%= @blog.trip.name %></h1>
+      <h3 class="blog-title">Trip: <%= link_to @blog.trip.name, "/trips/#{@blog.trip.slug}"%></h1>
     <% end %>
     <h4><%= @blog.formatted_date %></h4>
     <p class="posted-date">Posted on <%= @blog.posted_on %> by <%= link_to @blog.user.nickname, user_path(@blog.user.nickname) %> </p>

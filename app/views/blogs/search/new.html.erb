@@ -1,5 +1,6 @@
 
   <div class="row">
+    <%= link_to "New Search", new_blog_search_path, class: "new-search btn btn-default hidden" %>
     <div class="search-form col-md-3">
       <%= form_for :search, id: "blog-search-form" do |f| %>
       <%= f.text_field :location, placeholder: "City", class: "form-control" %>

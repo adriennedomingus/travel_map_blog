@@ -1,0 +1,13 @@
+
+  <div class="row">
+    <%= link_to "New Search", new_photo_search_path, class: "new-photo-search btn btn-default hidden" %>
+    <div class="photo-search-form col-md-3">
+      <%= form_for :search, id: "photo-search-form" do |f| %>
+      <%= f.text_field :location, placeholder: "City", class: "form-control" %>
+      <%= f.text_field :radius, placeholder: "Search Radius (Miles)", class: "form-control" %>
+      <%= link_to "Search", '#', id: "photo-search", class: "btn btn-default" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="container-fluid" id="map">
+  </div>

@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get '/blogs/search',               to: 'blogs/search#new',    as: 'new_blog_search'
   post '/blogs/search',              to: 'blogs/search#index',  as: 'blog_search_index'
 
+  get '/photos/search',               to: 'photos/search#new',    as: 'new_photo_search'
+  post '/photos/search',              to: 'photos/search#index',  as: 'photo_search_index'
+
   resources :blogs,                  only: [:show],             param: :slug
   resources :trips,                  only: [:new, :create, :update, :destroy]
   resources :trips,                  only: [:show, :edit],      param: :slug

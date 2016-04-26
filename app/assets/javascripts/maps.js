@@ -3,6 +3,9 @@ $( document ).ready(function() {
   if (url[url.length - 1] === "search" && url[url.length - 2] === "blogs") {
     initMap();
     placeBlogSearchMarkers();
+  } else if (url[url.length - 1] === "search" && url[url.length - 2] === "photos") {
+      initMap();
+      placePhotoSearchMarkers();
   } else if ( $('#map').length > 0 ) {
     $(".new-search").addClass("hidden");
     initMap();
@@ -84,7 +87,7 @@ function placeBlogSearchMarkers(){
         if (data["search"].length === 0) {
           alert("No blogs match your search. Please try a different location or a larger search radius.");
         } else {
-          $(".search-form").addClass('hidden')
+          $(".blog-search-form").addClass('hidden')
           $.each(data["search"], function(key, blog) {
             var pinColor = setPinColor(blog);
             var marker = new google.maps.Marker({
@@ -98,7 +101,44 @@ function placeBlogSearchMarkers(){
                      },
               url: "/blogs/" + blog.slug
             });
-            $(".new-search").removeClass("hidden");
+            $(".new-blog-search").removeClass("hidden");
+            map.setZoom(8);
+            map.setCenter({lat: parseInt(this.latitude), lng: parseInt(this.longitude)});
+            google.maps.event.addListener(marker, 'click', function() {
+              window.location.href = this.url;
+            });
+          })
+        }
+      }
+    });
+  });
+}
+
+function placePhotoSearchMarkers(){
+  $("#photo-search").click(function(){
+    var location = $("#search_location").val();
+    var radius = $("#search_radius").val();
+    $.ajax({
+      type: "POST",
+      url: "/photos/search?location=" + location + "&radius=" + radius,
+      success: function(data) {
+        if (data["search"].length === 0) {
+          alert("No photos match your search. Please try a different location or a larger search radius.");
+        } else {
+          $(".photo-search-form").addClass('hidden')
+          $.each(data["search"], function(key, photo) {
+            var pinColor = setPinColor(photo);
+            var marker = new google.maps.Marker({
+              position: {lat: parseFloat(photo.latitude), lng: parseFloat(photo.longitude)},
+              map: map,
+              icon: {
+                      path: google.maps.SymbolPath.CIRCLE,
+                      scale: 5,
+                      strokeColor: pinColor,
+                     },
+              url: "/photos/" + photo.id
+            });
+            $(".new-photo-search").removeClass("hidden");
             map.setZoom(8);
             map.setCenter({lat: parseInt(this.latitude), lng: parseInt(this.longitude)});
             google.maps.event.addListener(marker, 'click', function() {

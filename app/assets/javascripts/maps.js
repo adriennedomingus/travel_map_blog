@@ -1,18 +1,15 @@
 $( document ).ready(function() {
   var url = document.URL.split("/")
   if (url[url.length - 1] === "search" && url[url.length - 2] === "blogs") {
-    initMap();
     placeBlogSearchMarkers();
   } else if (url[url.length - 1] === "search" && url[url.length - 2] === "photos") {
-      initMap();
-      placePhotoSearchMarkers();
+    placePhotoSearchMarkers();
   } else if ( $('#map').length > 0 ) {
-    $(".new-search").addClass("hidden");
-    initMap();
-    placeBlogMarkers();
-    placePhotoMarkers();
-    setLegend();
+    $(".new-search").addClass("hidden")
+    placeBlogMarkers("blog");
+    placePhotoMarkers("photo");
     setViewButtons();
+    setLegend();
   }
 });
 
@@ -26,52 +23,15 @@ function initMap() {
 }
 
 
-function setLegend(){
-  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(
-  document.getElementById('legend'));
-  var legend = document.getElementById('legend');
-  var url = document.URL.split("/")
-  var nickname = url[url.length - 1]
-  $.getJSON('/trip-colors/' + nickname, function(data){
-    $.each(data["trips"], function(key, trip){
-      var p = document.createElement('p');
-      p.innerHTML =  "<div class='square' id=" + trip.slug + "><style> #" + trip.slug + " { border: 5px solid" + trip.color + "; }</style></div><span class='trip-name'><a href='/users/" + nickname + "/trips/" + trip.slug +"'>" + trip.name + "</a></span>";
-      legend.appendChild(p);
-    })
-  })
-
-  var blogLink = document.createElement('p');
-  blogLink.innerHTML =  "<a href='/users/" + nickname + "/blogs'>All Blogs</a>";
-  legend.appendChild(blogLink);
-  var photoLink = document.createElement('p');
-  photoLink.innerHTML =  "<a href='/users/" + nickname + "/photos'>All Photos</a>";
-  legend.appendChild(photoLink);
-  var tripLink = document.createElement('p');
-  tripLink.innerHTML =  "<a href='/users/" + nickname + "/trips'>All Trips</a>";
-  legend.appendChild(tripLink);
-}
-
 var blogMarkers = []
 function placeBlogMarkers(){
   var nickname = getNickname();
   $.getJSON('/blog-markers/' + nickname, function(data) {
     $.each(data["blogs"], function(key, blog) {
       var pinColor = setPinColor(blog);
-      var marker = new google.maps.Marker({
-        position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
-        map: map,
-        icon: {
-                  path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-                  scale: 4,
-                  strokeWeight:3,
-                  strokeColor: pinColor,
-               },
-        url: "/blogs/" + blog.slug
-      });
+      var marker = createBlogMarker(blog, pinColor);
       blogMarkers.push(marker);
-      google.maps.event.addListener(marker, 'click', function() {
-        window.location.href = this.url;
-      });
+      addMarkerListener(marker);
     });
   })
 }
@@ -80,37 +40,43 @@ function placeBlogSearchMarkers(){
   $("#blog-search").click(function(){
     var location = $("#search_location").val();
     var radius = $("#search_radius").val();
-    $.ajax({
-      type: "POST",
-      url: "/blogs/search?location=" + location + "&radius=" + radius,
-      success: function(data) {
-        if (data["search"].length === 0) {
-          alert("No blogs match your search. Please try a different location or a larger search radius.");
-        } else {
-          $(".blog-search-form").addClass('hidden')
-          $.each(data["search"], function(key, blog) {
-            var pinColor = setPinColor(blog);
-            var marker = new google.maps.Marker({
-              position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
-              map: map,
-              icon: {
-                        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-                        scale: 4,
-                        strokeWeight:3,
-                        strokeColor: pinColor,
-                     },
-              url: "/blogs/" + blog.slug
-            });
-            $(".new-blog-search").removeClass("hidden");
-            map.setZoom(8);
-            map.setCenter({lat: parseInt(this.latitude), lng: parseInt(this.longitude)});
-            google.maps.event.addListener(marker, 'click', function() {
-              window.location.href = this.url;
-            });
-          })
-        }
+    placeSearchMarkers("blog", location, radius, ".new-blog-search");
+  });
+}
+
+function placeSearchMarkers(type, location, radius, newSearchButton) {
+  $.ajax({
+    type: "POST",
+    url: "/" + type + "s/search?location=" + location + "&radius=" + radius,
+    success: function(data) {
+      if (data["search"].length === 0) {
+        alert("No" + type + "s match your search. Please try a different location or a larger search radius.");
+      } else {
+        $("." + type + "-search-form").addClass('hidden')
+        $.each(data["search"], function(key, type) {
+          var pinColor = setPinColor(type);
+          var marker = createBlogMarker(type, pinColor);
+          $(newSearchButton).removeClass("hidden");
+          map.setZoom(8);
+          map.setCenter({lat: parseInt(this.latitude), lng: parseInt(this.longitude)});
+          addMarkerListener(marker);
+        })
       }
-    });
+    }
+  });
+}
+
+function createBlogMarker(blog, pinColor) {
+  return new google.maps.Marker({
+    position: {lat: parseFloat(blog.latitude), lng: parseFloat(blog.longitude)},
+    map: map,
+    icon: {
+              path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+              scale: 4,
+              strokeWeight:3,
+              strokeColor: pinColor,
+           },
+    url: "/blogs/" + blog.slug
   });
 }
 
@@ -118,36 +84,7 @@ function placePhotoSearchMarkers(){
   $("#photo-search").click(function(){
     var location = $("#search_location").val();
     var radius = $("#search_radius").val();
-    $.ajax({
-      type: "POST",
-      url: "/photos/search?location=" + location + "&radius=" + radius,
-      success: function(data) {
-        if (data["search"].length === 0) {
-          alert("No photos match your search. Please try a different location or a larger search radius.");
-        } else {
-          $(".photo-search-form").addClass('hidden')
-          $.each(data["search"], function(key, photo) {
-            var pinColor = setPinColor(photo);
-            var marker = new google.maps.Marker({
-              position: {lat: parseFloat(photo.latitude), lng: parseFloat(photo.longitude)},
-              map: map,
-              icon: {
-                      path: google.maps.SymbolPath.CIRCLE,
-                      scale: 5,
-                      strokeColor: pinColor,
-                     },
-              url: "/photos/" + photo.id
-            });
-            $(".new-photo-search").removeClass("hidden");
-            map.setZoom(8);
-            map.setCenter({lat: parseInt(this.latitude), lng: parseInt(this.longitude)});
-            google.maps.event.addListener(marker, 'click', function() {
-              window.location.href = this.url;
-            });
-          })
-        }
-      }
-    });
+    placeSearchMarkers("photo", location, radius, ".new-photo-search");
   });
 }
 
@@ -157,22 +94,30 @@ function placePhotoMarkers(){
   $.getJSON('/photo-markers/' + nickname, function(data) {
     $.each(data["photos"], function(key, photo) {
       var pinColor = setPinColor(photo);
-      var marker = new google.maps.Marker({
-        position: {lat: parseFloat(photo.latitude), lng: parseFloat(photo.longitude)},
-        map: map,
-        icon: {
-              path: google.maps.SymbolPath.CIRCLE,
-              scale: 5,
-              strokeColor: pinColor,
-              },
-        url: "/photos/" + photo.id
-      });
+      var marker = createPhotoMarker(photo, pinColor);
       photoMarkers.push(marker)
-      google.maps.event.addListener(marker, 'click', function() {
-        window.location.href = this.url;
-      });
+      addMarkerListener(marker);
     });
   })
+}
+
+function addMarkerListener(marker) {
+  google.maps.event.addListener(marker, 'click', function() {
+    window.location.href = this.url;
+  });
+}
+
+function createPhotoMarker(photo, pinColor) {
+  return new google.maps.Marker({
+    position: {lat: parseFloat(photo.latitude), lng: parseFloat(photo.longitude)},
+    map: map,
+    icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 5,
+          strokeColor: pinColor,
+          },
+    url: "/photos/" + photo.id
+  });
 }
 
 function setPinColor(blog){
@@ -183,88 +128,6 @@ function setPinColor(blog){
   } else {
     return "#FE7569";
   }
-}
-
-function BlogControl(controlDiv, map) {
-  var controlUI = setCSS(controlDiv, map, "Blogs Only");
-  controlUI.addEventListener('click', function() {
-    setMapOnAllBlog(map);
-    clearPhotoMarkers();
-  });
-}
-
-function PhotoControl(controlDiv, map) {
-  var controlUI = setCSS(controlDiv, map, "Photos Only");
-  controlUI.addEventListener('click', function() {
-    setMapOnAllPhoto(map);
-    clearBlogMarkers();
-  });
-}
-
-function PhotoBlogControl(controlDiv, map) {
-  var controlUI = setCSS(controlDiv, map, "Photos & Blogs");
-  controlUI.addEventListener('click', function() {
-    setMapOnAllBlog(map);
-    setMapOnAllPhoto(map);
-  });
-}
-
-function setMapOnAllBlog(map) {
-  for (var i = 0; i < blogMarkers.length; i++) {
-    blogMarkers[i].setMap(map);
-  }
-}
-
-function setMapOnAllPhoto(map) {
-  for (var i = 0; i < photoMarkers.length; i++) {
-    photoMarkers[i].setMap(map);
-  }
-}
-
-function clearBlogMarkers() {
-  setMapOnAllBlog(null);
-}
-
-function clearPhotoMarkers() {
-  setMapOnAllPhoto(null);
-}
-
-function setViewButtons() {
-  var photoBlogControlDiv = document.createElement('div');
-  var photoBlogControl = new PhotoBlogControl(photoBlogControlDiv, map);
-  photoBlogControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(photoBlogControlDiv);
-
-  var blogControlDiv = document.createElement('div');
-  var blogControl = new BlogControl(blogControlDiv, map);
-  blogControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(blogControlDiv);
-
-  var photoControlDiv = document.createElement('div');
-  var photoControl = new PhotoControl(photoControlDiv, map);
-  photoControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(photoControlDiv);
-}
-
-function setCSS(controlDiv, map, text) {
-  var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = '#fff';
-  controlUI.style.border = '2px solid grey';
-  controlUI.style.borderRadius = '3px';
-  controlUI.style.cursor = 'pointer';
-  controlUI.style.marginBottom = '22px';
-  controlUI.style.textAlign = 'center';
-  controlDiv.appendChild(controlUI);
-
-  var controlText = document.createElement('div');
-  controlText.style.color = 'rgb(25,25,25)';
-  controlText.style.fontSize = '16px';
-  controlText.style.lineHeight = '38px';
-  controlText.style.paddingLeft = '5px';
-  controlText.style.paddingRight = '5px';
-  controlText.innerHTML = text;
-  controlUI.appendChild(controlText);
-  return controlUI;
 }
 
 function getNickname(){

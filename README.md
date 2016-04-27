@@ -1,8 +1,8 @@
 #### Overview  
 
-Instead of displaying a user's blogs linearly by date, this app allows users to view all of their posts geographically on a map.
+Instead of displaying a user's blogs linearly by date, this app allows users to view all of their posts geographically on a map.The WanderMap also introduces the idea of 'trips', with which blogs and photos can be associated.
 
-The WanderMap also introduces the idea of 'trips', with which blogs and photos can be associated.
+Users can also search blogs and photos by location, viewing all results from all users.
 
 #### Production
 
@@ -19,4 +19,4 @@ The WanderMap can be found in production [here](http://wander-map.herokuapp.com)
 * Unsplash API used to search photos based on weather returned, to update a blog background dynamically.
 
 #### Testing
-The test suite is written in RSpec, used for feature, model, and controller tests.
+The test suite is written in RSpec, using Capybara for feature tests, and VCR to record API responses.

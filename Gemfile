@@ -21,6 +21,7 @@ gem 'newrelic_rpm'
 gem 'active_model_serializers'
 
 group :development, :test do
+  gem 'selenium-webdriver'
   gem 'pry-rails'
   gem 'byebug'
   gem 'rspec-rails'

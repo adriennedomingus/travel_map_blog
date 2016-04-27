@@ -65,6 +65,8 @@ function placeBlogMarkers(){
                   scale: 4,
                   strokeWeight:3,
                   strokeColor: pinColor,
+                  title: "Hello World"
+                  optimized: false
                },
         url: "/blogs/" + blog.slug
       });

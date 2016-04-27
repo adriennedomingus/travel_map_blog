@@ -1,17 +1,21 @@
 <div class="container">
-  <h1 class="centered"> <%= @user.nickname %>'s Trips</h1>
-  <table class="table">
-    <tr>
-      <th>Trip</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-    </tr>
-    <% @trips.each do |trip| %>
-    <tr>
-      <td> <%= link_to trip.name, trip_path(trip.slug)%></td>
-      <td> <%= trip.formatted_start_date %></td>
-      <td> <%= trip.formatted_end_date %></td>
-    </tr>
-    <% end %>
-  </table>
+  <% if @trips.length == 0 %>
+    <p class="centered">You haven't created any trips yet!</p>
+  <% else %>
+    <h1 class="centered"> <%= @user.nickname %>'s Trips</h1>
+    <table class="table">
+      <tr>
+        <th>Trip</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+      <% @trips.each do |trip| %>
+      <tr>
+        <td> <%= link_to trip.name, trip_path(trip.slug)%></td>
+        <td> <%= trip.formatted_start_date %></td>
+        <td> <%= trip.formatted_end_date %></td>
+      </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>

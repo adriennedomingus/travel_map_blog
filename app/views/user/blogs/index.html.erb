@@ -1,1 +1,5 @@
-<%= render partial: "partials/blog_table", locals: {blogs: @blogs} %>
+<% if @blogs.length == 0 %>
+  <p class="centered">You haven't written any blogs yet!</p>
+<% else %>
+  <%= render partial: "partials/blog_table", locals: {blogs: @blogs} %>
+<% end %>

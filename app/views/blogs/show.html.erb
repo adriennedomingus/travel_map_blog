@@ -16,20 +16,24 @@
       <h3 class="centered">Photos</h3>
     <% end %>
     <br>
-    <% @blog.photos.each do |photo| %>
-      <div class="col-md-4">
-        <%= render partial: "partials/photo", locals: { photo: photo } %>
-      </div>
-    <% end %>
+    <div class="row">
+      <% @blog.photos.each do |photo| %>
+        <div class="col-md-4">
+          <%= render partial: "partials/photo", locals: { photo: photo } %>
+        </div>
+      <% end %>
+    </div>
     <hr>
-    <h3 class="centered">Comments (<%= @blog.comments.count %>)</h3>
-    <br>
-    <% @blog.comments.order(created_at: :desc).each do |comment| %>
-      <p class= "post-title"><%= comment.user.nickname %> </p>
-      <p class= "post-date"><%= comment.posted_on %></p>
-      <p class="post-contents"><%= comment.body %></p>
-      <hr>
-    <% end %>
-    <%= render partial: "partials/comment_form", locals: {commentable: @blog} %>
+    <div class="row">
+      <h3 class="centered">Comments (<%= @blog.comments.count %>)</h3>
+      <br>
+      <% @blog.comments.order(created_at: :desc).each do |comment| %>
+        <p class= "post-title"><%= comment.user.nickname %> </p>
+        <p class= "post-date"><%= comment.posted_on %></p>
+        <p class="post-contents"><%= comment.body %></p>
+        <hr>
+      <% end %>
+      <%= render partial: "partials/comment_form", locals: {commentable: @blog} %>
+    </div>
   </div>
 </div>

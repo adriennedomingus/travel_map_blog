@@ -2,6 +2,7 @@ class Trip < ActiveRecord::Base
   has_many :blogs
   has_many :photos
   belongs_to :user
+  has_many :comments, as: :commentable
 
   before_save :set_slug
 

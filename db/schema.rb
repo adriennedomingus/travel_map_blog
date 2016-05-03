@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425220032) do
+ActiveRecord::Schema.define(version: 20160503183109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 20160425220032) do
 
   add_index "blogs", ["trip_id"], name: "index_blogs_on_trip_id", using: :btree
   add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "body"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "title"
@@ -78,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160425220032) do
 
   add_foreign_key "blogs", "trips"
   add_foreign_key "blogs", "users"
+  add_foreign_key "comments", "users"
   add_foreign_key "photos", "blogs"
   add_foreign_key "photos", "trips"
   add_foreign_key "photos", "users"

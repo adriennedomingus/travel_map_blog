@@ -12,12 +12,24 @@
     <% end %>
     <p><%= @blog.content.gsub(/\n/, '<br/>').html_safe %></p>
     <hr>
-    <h3 class="centered">Photos</h3>
+    <% if @blog.photos.count > 0 %>
+      <h3 class="centered">Photos</h3>
+    <% end %>
     <br>
     <% @blog.photos.each do |photo| %>
       <div class="col-md-4">
         <%= render partial: "partials/photo", locals: { photo: photo } %>
       </div>
     <% end %>
+    <hr>
+    <h3 class="centered">Comments (<%= @blog.comments.count %>)</h3>
+    <br>
+    <% @blog.comments.order(created_at: :desc).each do |comment| %>
+      <p class= "post-title"><%= comment.user.nickname %> </p>
+      <p class= "post-date"><%= comment.posted_on %></p>
+      <p class="post-contents"><%= comment.body %></p>
+      <hr>
+    <% end %>
+    <%= render partial: "partials/comment_form", locals: {commentable: @blog} %>
   </div>
 </div>

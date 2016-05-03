@@ -2,6 +2,7 @@ class Photo < ActiveRecord::Base
   belongs_to :user
   belongs_to :blog
   belongs_to :trip
+  has_many :comments, as: :commentable
 
   validates_presence_of :title
   validates_presence_of :description

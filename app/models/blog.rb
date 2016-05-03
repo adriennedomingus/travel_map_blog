@@ -2,6 +2,7 @@ class Blog < ActiveRecord::Base
   belongs_to :user
   belongs_to :trip
   has_many :photos
+  has_many :comments, as: :commentable
 
   validates :title, presence: :true
   validates :title, uniqueness: :true

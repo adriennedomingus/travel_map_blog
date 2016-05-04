@@ -1,4 +1,6 @@
 class Photo < ActiveRecord::Base
+  include Formatters
+  
   belongs_to :user
   belongs_to :blog
   belongs_to :trip
@@ -33,10 +35,6 @@ class Photo < ActiveRecord::Base
         self.update_attribute(:longitude, blog.longitude)
       end
     end
-  end
-
-  def set_slug
-    self.update_attribute(:slug, title.parameterize)
   end
 
   def set_trip

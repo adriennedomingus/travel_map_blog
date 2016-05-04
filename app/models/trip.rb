@@ -1,4 +1,6 @@
 class Trip < ActiveRecord::Base
+  include Formatters
+  
   has_many :blogs
   has_many :photos
   belongs_to :user
@@ -22,9 +24,4 @@ class Trip < ActiveRecord::Base
   def formatted_end_date
     format_time(end_date)
   end
-
-  private
-    def format_time(time)
-      time.strftime("%B %d, %Y")
-    end
 end

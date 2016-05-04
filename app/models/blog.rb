@@ -1,4 +1,6 @@
 class Blog < ActiveRecord::Base
+  include Formatters
+
   belongs_to :user
   belongs_to :trip
   has_many :photos
@@ -17,14 +19,6 @@ class Blog < ActiveRecord::Base
     format_time(date)
   end
 
-  def posted_on
-    format_time(created_at)
-  end
-
-  def set_slug
-    self.update_attribute(:slug, title.parameterize)
-  end
-
   def set_weather
     self.weather = Weather.description(self)
   end
@@ -37,10 +31,4 @@ class Blog < ActiveRecord::Base
     end
     UnsplashService.new.random_by_search(term)
   end
-
-  private
-
-    def format_time(time)
-      time.strftime("%B %d, %Y")
-    end
 end

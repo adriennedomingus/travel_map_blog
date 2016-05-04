@@ -400,8 +400,6 @@
         1,
         1,
         1,
-        1,
-        1,
         null,
         1,
         1,
@@ -417,7 +415,6 @@
         null,
         1,
         2,
-        1,
         1,
         1,
         1,
@@ -1546,6 +1543,19 @@
         1,
         null
       ],
+      "/Users/adrienne/Turing/3module/travel_map_blog/app/models/photo_creator.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null
+      ],
       "/Users/adrienne/Turing/3module/travel_map_blog/app/controllers/user/photos_controller.rb": [
         1,
         1,
@@ -1731,6 +1741,6 @@
         null
       ]
     },
-    "timestamp": 1462400819
+    "timestamp": 1462401823
   }
 }

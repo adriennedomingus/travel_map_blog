@@ -15,8 +15,8 @@
     </div>
   <% end %>
   <div class="comments">
-    <%= render partial: "partials/comment_form", locals: {commentable: @trip} %>
     <br>
     <%= render partial: "partials/comments", locals: {commentable: @trip} %>
+    <%= render partial: "partials/comment_form", locals: {commentable: @trip} %>
   </div>
 </div>

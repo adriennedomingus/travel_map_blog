@@ -8,9 +8,7 @@ class PhotosController < ApplicationController
   def create
     @photo = current_user.photos.new(photo_params)
     if @photo.save
-      @photo.set_location(photo_params)
-      @photo.set_trip
-      @photo.set_slug
+      PhotoCreator.setup(@photo, photo_params)
       flash[:success] = "Your photo has been uploaded!"
       redirect_to user_photo_path(current_user.nickname, @photo.slug)
     else
@@ -28,8 +26,7 @@ class PhotosController < ApplicationController
 
   def update
     if @photo.update(photo_params)
-      @photo.set_trip
-      @photo.set_slug
+      PhotoCreator.update(@photo)
       flash[:success] = "Your photo has been updated!"
       redirect_to user_photos_path(current_user.nickname)
     else

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'user/:nickname/photos/:slug',  to: 'user/photos#show',          as: 'user_photo'
   post '/photos/:id/comments',        to: 'photos/comments#create', as: 'photo_comments'
 
+  delete 'comments/:id',              to: 'comments#destroy',       as: 'comment' 
+
   resources :blogs,                  only: [:show],             param: :slug
   resources :trips,                  only: [:new, :create, :update, :destroy]
   resources :trips,                  only: [:edit],      param: :slug

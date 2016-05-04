@@ -11,7 +11,7 @@
       </tr>
       <% @trips.each do |trip| %>
       <tr>
-        <td> <%= link_to trip.name, trip_path(trip.slug)%></td>
+        <td> <%= link_to trip.name, users_trip_path(trip.user.nickname, trip.slug)%></td>
         <td> <%= trip.formatted_start_date %></td>
         <td> <%= trip.formatted_end_date %></td>
       </tr>

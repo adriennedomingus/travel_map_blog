@@ -9,6 +9,8 @@ class CommentsController < ApplicationController
         redirect_to blog_path(@commentable.slug)
       elsif @commentable.class == Photo
         redirect_to user_photo_path(@commentable.user.nickname, @commentable.slug)
+      elsif @commentable.class == Trip
+        redirect_to users_trip_path(@commentable.user.nickname, @commentable.slug)
       end
     else
       flash[:danger] = "You must be logged in to leave a comment. Please log in and try again."

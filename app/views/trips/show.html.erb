@@ -14,4 +14,8 @@
       <%= render partial: "partials/photo", locals: { photo: photo } %>
     </div>
   <% end %>
+  <%= render partial: "partials/comment_form", locals: {commentable: @trip} %>
+  <br>
+  <%= render partial: "partials/comments", locals: {commentable: @trip} %>
+
 </div>

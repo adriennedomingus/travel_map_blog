@@ -7,7 +7,7 @@ RSpec.feature "user edits a trip" do
       t1, _ = create_trip_and_blog(user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      visit users_trip_path(user, t1.slug)
+      visit users_trip_path(user.nickname, t1.slug)
       click_on "Edit"
       fill_in :trip_name, with: "new trip name"
       click_on "Update Trip"
@@ -23,7 +23,7 @@ RSpec.feature "user edits a trip" do
       t1, _ = create_trip_and_blog(user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      visit users_trip_path(user, t1.slug)
+      visit users_trip_path(user.nickname, t1.slug)
       click_on "Edit"
       fill_in :trip_name, with: ""
       click_on "Update Trip"

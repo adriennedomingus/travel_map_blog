@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'users/:nickname/trips',       to: 'trips#index',         as: 'users_trips'
   get 'users/:nickname/trips/:slug', to: 'trips#show',          as: 'users_trip'
+  post '/trips/:id/comments',        to: 'trips/comments#create', as: 'trip_comments'
 
   get '/blog-markers/:nickname',     to: 'blogs#index'
   get '/photo-markers/:nickname',    to: 'photos#index'
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
 
   resources :blogs,                  only: [:show],             param: :slug
   resources :trips,                  only: [:new, :create, :update, :destroy]
-  resources :trips,                  only: [:show, :edit],      param: :slug
+  resources :trips,                  only: [:edit],      param: :slug
   resources :photos,                 except: [:index, :show]
 
   namespace :user do

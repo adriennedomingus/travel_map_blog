@@ -30,7 +30,7 @@ class TripsController < ApplicationController
   def update
     if @trip.update(trip_params)
       flash[:success] = "Your trip has been updated!"
-      redirect_to trip_path(@trip.slug)
+      redirect_to users_trip_path(current_user.nickname, @trip.slug)
     else
       flash.now[:danger] = "Please enter all information"
       render :edit

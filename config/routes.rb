@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/photos/search',               to: 'photos/search#new',    as: 'new_photo_search'
   post '/photos/search',              to: 'photos/search#index',  as: 'photo_search_index'
   get 'user/:nickname/photos/:slug',  to: 'user/photos#show',          as: 'user_photo'
+  post '/photos/:id/comments',        to: 'photos/comments#create', as: 'photo_comments'
 
   resources :blogs,                  only: [:show],             param: :slug
   resources :trips,                  only: [:new, :create, :update, :destroy]

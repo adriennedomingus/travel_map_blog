@@ -25,14 +25,7 @@
     </div>
     <hr>
     <div class="row">
-      <h3 class="centered">Comments (<%= @blog.comments.count %>)</h3>
-      <br>
-      <% @blog.comments.order(created_at: :desc).each do |comment| %>
-        <p class= "post-title"><%= comment.user.nickname %> </p>
-        <p class= "post-date"><%= comment.posted_on %></p>
-        <p class="post-contents"><%= comment.body %></p>
-        <hr>
-      <% end %>
+      <%= render partial: "partials/comments", locals: {commentable: @blog} %>
       <%= render partial: "partials/comment_form", locals: {commentable: @blog} %>
     </div>
   </div>

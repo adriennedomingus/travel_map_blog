@@ -1,3 +1,6 @@
 <div class="container">
   <%= render partial: "partials/photo", locals: { photo: @photo } %>
+  <%= render partial: "partials/comment_form", locals: {commentable: @photo} %>
+  <br>
+  <%= render partial: "partials/comments", locals: {commentable: @photo} %>
 </div>

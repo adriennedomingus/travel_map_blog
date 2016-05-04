@@ -8,5 +8,7 @@
 <%= image_tag photo.image.url(:large), class: "centered" %>
 <br>
 <p><%= photo.description %></p>
-<p class= "centered"> <%= link_to "Delete", photo_path(photo), method: :delete %></p>
-<p class= "centered"> <%= link_to "Edit", edit_photo_path(photo) %></p>
+<% if photo.user == current_user %>
+  <p class= "centered"> <%= link_to "Delete", photo_path(photo), method: :delete %></p>
+  <p class= "centered"> <%= link_to "Edit", edit_photo_path(photo) %></p>
+<% end %>

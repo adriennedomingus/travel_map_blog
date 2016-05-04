@@ -1,0 +1,8 @@
+<h3 class="centered">Comments (<%= commentable.comments.count %>)</h3>
+<br>
+<% commentable.comments.order(created_at: :desc).each do |comment| %>
+  <p class= "post-title"><%= comment.user.nickname %> </p>
+  <p class= "post-date"><%= comment.posted_on %></p>
+  <p class="post-contents"><%= comment.body %></p>
+  <hr>
+<% end %>

@@ -103,7 +103,6 @@ function placePhotoSearchMarkers(){
         }
       }
     })
-    // placeSearchMarkers("photo", location, radius, ".new-photo-search");
   });
 }
 

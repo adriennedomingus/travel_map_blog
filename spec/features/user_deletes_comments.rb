@@ -60,4 +60,24 @@ RSpec.feature "user deletes a blog comment" do
       expect(page).to_not have_content("a comment")
     end
   end
+
+  scenario "user deletes someone elses comment on their resource" do
+    VCR.use_cassette("blog.new") do
+      user = create_user
+      t1, _ = create_trip_and_blog(user)
+
+      other_user = User.create(provider: "twitter", uid: "1234", nickname: "adrienne", token: ENV['USER_TOKEN'], secret:  ENV['USER_SECRET'])
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      t1.comments.create(body: "a comment", user_id: other_user.id)
+      visit users_trip_path(user.nickname, t1.slug)
+
+      expect(page).to have_content("a comment")
+      within(".comments") do
+        click_on "Delete"
+      end
+      expect(page).to have_content("Your comment has been deleted!")
+      expect(page).to_not have_content("a comment")
+    end
+  end
 end

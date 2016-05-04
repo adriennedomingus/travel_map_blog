@@ -115,8 +115,8 @@ function createPhotoMarker(photo, pinColor) {
           path: google.maps.SymbolPath.CIRCLE,
           scale: 5,
           strokeColor: pinColor,
-          },
-    url: "/photos/" + photo.id
+        },
+    url: "/user/" + photo.user.nickname +"/photos/" + photo.slug
   });
 }
 

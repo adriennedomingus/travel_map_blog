@@ -23,11 +23,12 @@ Rails.application.routes.draw do
 
   get '/photos/search',               to: 'photos/search#new',    as: 'new_photo_search'
   post '/photos/search',              to: 'photos/search#index',  as: 'photo_search_index'
+  get 'user/:nickname/photos/:slug',  to: 'user/photos#show',          as: 'user_photo'
 
   resources :blogs,                  only: [:show],             param: :slug
   resources :trips,                  only: [:new, :create, :update, :destroy]
   resources :trips,                  only: [:show, :edit],      param: :slug
-  resources :photos,                 except: [:index]
+  resources :photos,                 except: [:index, :show]
 
   namespace :user do
     resources :blogs,                only: [:new, :create, :update, :destroy]

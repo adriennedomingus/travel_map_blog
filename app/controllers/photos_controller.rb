@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :find_photo, only: [:show, :edit, :update]
+  before_action :find_photo, only: [:edit, :update]
 
   def new
     @photo = Photo.new
@@ -10,8 +10,9 @@ class PhotosController < ApplicationController
     if @photo.save
       @photo.set_location(photo_params)
       @photo.set_trip
+      @photo.set_slug
       flash[:success] = "Your photo has been uploaded!"
-      redirect_to photo_path(@photo)
+      redirect_to user_photo_path(current_user.nickname, @photo.slug)
     else
       flash.now[:danger] = "Please enter all information"
       render :new
@@ -28,6 +29,7 @@ class PhotosController < ApplicationController
   def update
     if @photo.update(photo_params)
       @photo.set_trip
+      @photo.set_slug
       flash[:success] = "Your photo has been updated!"
       redirect_to user_photos_path(current_user.nickname)
     else

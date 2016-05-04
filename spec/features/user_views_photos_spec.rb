@@ -29,7 +29,7 @@ RSpec.feature do
       t1, b1 = create_trip_and_blog(user)
       photo = create_photo(b1, user, t1)
 
-      visit photo_path(photo)
+      visit user_photo_path(user.nickname, photo.slug)
 
       expect(page).to have_content(photo.title)
       expect(page).to have_content(photo.description)

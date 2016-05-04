@@ -8,7 +8,7 @@ RSpec.feature "user deletes a photo" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       photo = create_photo(blog, user, trip)
 
-      visit photo_path(photo)
+      visit user_photo_path(user.nickname, photo.slug)
       click_on "Delete"
 
       expect(page).to_not have_content("Photo title")

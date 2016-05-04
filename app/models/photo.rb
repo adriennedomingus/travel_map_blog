@@ -35,6 +35,10 @@ class Photo < ActiveRecord::Base
     end
   end
 
+  def set_slug
+    self.update_attribute(:slug, title.parameterize)
+  end
+
   def set_trip
     if self.blog && self.blog.trip_id
       self.update_attribute(:trip, blog.trip)

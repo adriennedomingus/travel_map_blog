@@ -1,4 +1,4 @@
-<h4><%= link_to photo.title, photo_path(photo)%></h4>
+<h4><%= link_to photo.title, user_photo_path(photo.user.nickname, photo.slug)%></h4>
 <% if photo.trip %>
   <p class="centered">Trip: <%= link_to photo.trip.name, "/trips/#{photo.trip.slug}" %></p>
 <% end %>

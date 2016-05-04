@@ -44,7 +44,7 @@ module SpecHelpers
   end
 
   def create_photo(blog, user, trip)
-    blog.photos.create(title: "title", description: "description", image:"http://s3.amazonaws.com/travel-map-blog/images/40/original/IMG_2013.JPG?1461168957", user_id: user.id, trip_id: trip.id)
+    blog.photos.create(title: "title", description: "description", image:"http://s3.amazonaws.com/travel-map-blog/images/40/original/IMG_2013.JPG?1461168957", user_id: user.id, trip_id: trip.id, slug: "title")
   end
 end
 

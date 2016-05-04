@@ -84,7 +84,26 @@ function placePhotoSearchMarkers(){
   $("#photo-search").click(function(){
     var location = $("#search_location").val();
     var radius = $("#search_radius").val();
-    placeSearchMarkers("photo", location, radius, ".new-photo-search");
+    $.ajax({
+      type: "POST",
+      url: "/photos/search?location=" + location + "&radius=" + radius,
+      success: function(data) {
+        if (data["search"].length === 0) {
+          alert("No photos match your search. Please try a different location or a larger search radius.");
+        } else {
+          $(".photo-search-form").addClass('hidden')
+          $.each(data["search"], function(key, photo) {
+            var pinColor = setPinColor(photo);
+            var marker = createPhotoMarker(photo, pinColor);
+            $(".new-photo-search").removeClass("hidden");
+            map.setZoom(8);
+            map.setCenter({lat: parseInt(this.latitude), lng: parseInt(this.longitude)});
+            addMarkerListener(marker);
+          })
+        }
+      }
+    })
+    // placeSearchMarkers("photo", location, radius, ".new-photo-search");
   });
 }
 

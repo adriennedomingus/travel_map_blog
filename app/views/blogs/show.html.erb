@@ -6,10 +6,20 @@
     <% end %>
     <h4><%= @blog.formatted_date %></h4>
     <p class="posted-date">Posted on <%= @blog.posted_on %> by <%= link_to @blog.user.nickname, user_path(@blog.user.nickname) %> </p>
-    <% if current_user && @blog.user_id == current_user.id %>
-      <p class="centered"><%= link_to "Edit", edit_user_blog_path(current_user.nickname, @blog.slug) %></p>
-      <p class="centered delete"><%= link_to "Delete", user_blog_path(@blog), method: :delete %></p>
-    <% end %>
+    <div class="row">
+      <% if current_user && @blog.user_id == current_user.id %>
+        <div class="col-md-4">
+          <p class="centered btn btn-default"><%= link_to "Edit", edit_user_blog_path(current_user.nickname, @blog.slug) %></p>
+        </div>
+        <div class="col-md-4">
+          <p class="centered btn btn-default"><%= link_to "Add photo", new_photo_path %></p>
+        </div>
+        <div class="col-md-4">
+          <p class="centered delete btn btn-default"><%= link_to "Delete", user_blog_path(@blog), method: :delete %></p>
+        </div>
+      <% end %>
+    </div>
+  <br>
     <p><%= @blog.content.gsub(/\n/, '<br/>').html_safe %></p>
     <hr>
     <% if @blog.photos.count > 0 %>

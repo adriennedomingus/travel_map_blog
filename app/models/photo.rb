@@ -1,6 +1,6 @@
 class Photo < ActiveRecord::Base
   include Formatters
-  
+
   belongs_to :user
   belongs_to :blog
   belongs_to :trip
@@ -9,6 +9,8 @@ class Photo < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :description
   validates_presence_of :image
+  validates :title, uniqueness: { scope: :user_id,
+    message: "should be unique" }
 
   geocoded_by :location
   after_validation :geocode

@@ -7,10 +7,12 @@ class Blog < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   validates :title, presence: :true
-  validates :title, uniqueness: :true
+  # validates :title, uniqueness: :true
   validates :date, presence: :true
   validates :content, presence: :true
   validates :location, presence: :true
+  validates :title, uniqueness: { scope: :user_id,
+    message: "should be unique" }
 
   geocoded_by :location
   after_validation :geocode

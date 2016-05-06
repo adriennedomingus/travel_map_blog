@@ -12,7 +12,7 @@ class PhotosController < ApplicationController
       flash[:success] = "Your photo has been uploaded!"
       redirect_to user_photo_path(current_user.nickname, @photo.slug)
     else
-      flash.now[:danger] = "Please enter all information"
+      flash.now[:danger] = "Please enter all information, and make sure that your photo has a unique title"
       render :new
     end
   end

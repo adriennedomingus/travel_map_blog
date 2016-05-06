@@ -1,6 +1,6 @@
 class Trip < ActiveRecord::Base
   include Formatters
-  
+
   has_many :blogs
   has_many :photos
   belongs_to :user
@@ -8,10 +8,12 @@ class Trip < ActiveRecord::Base
 
   before_save :set_slug
 
-  validates :name, presence: :true, uniqueness: :true
+  validates :name, presence: :true
   validates_presence_of :start_date
   validates_presence_of :end_date
   validates_presence_of :color
+  validates :name, uniqueness: { scope: :user_id,
+    message: "should be unique" }
 
   def set_slug
     self.slug = name.parameterize

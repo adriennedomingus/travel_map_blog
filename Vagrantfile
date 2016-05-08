@@ -7,7 +7,7 @@ Vagrant.configure('2') do |config|
     override.vm.box = 'digital_ocean'
     override.vm.box_url = "https://github.com/devopsgroup-io/vagrant-digitalocean/raw/master/box/digital_ocean.box"
 
-    provider.token = '7a179b3ff056cef54e5e1172a2f9299e702e766b7fac85af0cae9c069a1aa40c'
+    provider.token = ''
     provider.image = 'ubuntu-14-04-x64'
     provider.region = 'sfo1'
     provider.size = '1gb'

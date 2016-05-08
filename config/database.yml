@@ -20,6 +20,9 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
+  username: db_service
+  password: abc123
+  host: localhost
 
 development:
   <<: *default
@@ -81,3 +84,6 @@ test:
 production:
   <<: *default
   database: travel_map_blog_production
+  username: db_service
+  password: abc123
+  host: localhost

@@ -15,6 +15,7 @@
 /coverage/.*
 /spec/cassettes/*
 /public/system/*
+.vagrant
 
 
 # Ignore application configuration

@@ -1,0 +1,32 @@
+version: '2'
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    command: bundle exec rake db:create db:migrate
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    depends_on:
+      - db
+    environment:
+      - USER_TOKEN=3461573294-j2rZfjFAhS3e65hjreynilFiSfYi77Vx6yPedgS
+      - USER_SECRET=Nhjo5iWPZRGRAWPbi8cRiMuhHj78QH8eeHzN8mEhDPaq4
+      - GOOGLE_MAPS=AIzaSyCPzf4v8omG9CbRVclb6UxuMuH36lkZZvI
+      - UNSPLASH_ID=615fbd58f3ce0e5a1b10d78a4432543e3260835f9fb757f533ff22bf93df171b
+      - UNSPLASH_SECRET=81f4296082935d5ea8a61acf791738466af326dbd6581947b3223ad27acad82b
+      - AWS_ACCESS_KEY_ID=AKIAIPOUI2KWTV3F4EEQ
+      - AWS_SECRET_ACCESS_KEY=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
+      - S3_BUCKET_NAME=travel-map-blog
+      - AWS_REGION=us-east-1
+      - WEATHER_KEY=046f25cbe2ad431a902190109162004
+      - API_KEY=2kvVNJkorOta7b9Sk4hxVHG6x
+      - API_SECRET=EXjxIFEm3m2jyErqrvIkY1bgydkG0vHcbAjIFWdPOGNW1y1et4
+      - SECRET_KEY_BASE=0abc9331c51c0b7283fbd11dadf669c0370e89d9abb5abfc2e249a11383eb7bda47db6949c3cd5ecf412cf4139fc822c272651c5f6a2c650690a79b68c958b20

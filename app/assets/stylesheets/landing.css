@@ -24,12 +24,16 @@
 
 .landing-button {
   background: rgba(255,255,255, 0.7);
-  position: absolute;
-  margin-top: 15px;
-  margin-left: -35px;
+  position: relative;
   padding: 15px;
   border: 2px solid #6B4C37;
   border-radius: 5px;
   text-decoration: none;
   color: #6B4C37;
+  margin: auto;
+}
+
+.welcome-message {
+  padding-bottom: 25px;
+  margin-top: -10px;
 }
